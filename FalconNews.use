@@ -1,0 +1,67 @@
+model  FalconNews
+
+--Classes
+	class News
+		attributes
+			date: String
+			text: String
+			title: String
+			link: String
+			remaining_time: Integer
+	end
+	
+	class Image
+		attributes
+			url: String
+	end
+	
+	class Classification
+		attributes
+			priority_level: Integer
+			duration: Integer
+	end
+	
+	class WebList
+	end
+	
+	class WebSite
+		attributes
+			url: String
+	end
+	
+	class User
+		attributes
+			email: String
+			password: String
+			creation_date: String
+			name: String
+			first_name: String	
+	end
+
+-- Relations
+association news_image between
+	News[1]
+	Image[0..*]
+end
+
+association classification_news between
+	News[1]
+	Classification[1]
+end
+
+association list_sites between
+	WebList[1]
+	WebSite[1..*]
+end
+
+association user_weblist between
+	User[0..*]
+	WebList[1]
+end
+
+association website_news between
+	WebSite[1]
+	News[0..*]
+end
+
+

@@ -17,4 +17,6 @@ Display news related to cybersecurity field in the world
 
 ## Tutoriel 
 * https://openclassrooms.com/fr/courses/918836-concevez-votre-site-web-avec-php-et-mysql
+* https://www.codeofaninja.com/2017/02/create-simple-rest-api-in-php.html
+* https://rogerdudler.github.io/git-guide/
 

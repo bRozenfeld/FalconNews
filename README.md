@@ -10,3 +10,8 @@ Display news related to cybersecurity field in the world
 * http://localhost/FalconNews
 * cliquer sur api/test.php et vous devriez voir apparaitre "Test" à l'écran
 
+## Structure projet
+* api/ backend (php)
+* gui/ frontend (javascript / html / css)
+* db/ infos sur la base de données (diagramme UML, fichiers de configurations)
+

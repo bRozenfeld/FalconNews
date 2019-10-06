@@ -1,5 +1,5 @@
 <?php
-class Product {
+class News {
 
   // database connection and table name
   private $connection;
@@ -14,7 +14,7 @@ class Product {
 
   // constructor with $connection as database connection
   public function __construct($connection) {
-    this->connection = $connection;
+    $this->connection = $connection;
   }
 
   // function to create data
@@ -22,7 +22,8 @@ class Product {
 
   // function to read data
   public function read(){
-    $query = "SELECT * FROM News";
+    $query = "SELECT n.id, n.title, n.date, n.description, n.link
+              FROM " . $this->table_name . " n";
 
     $stmt = $this->connection->prepare($query);
 

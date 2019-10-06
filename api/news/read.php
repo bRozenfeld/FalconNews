@@ -2,6 +2,7 @@
 //required headers
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: GET");
 
 include_once "../config/database.php";
 include_once "../objects/news.php";
@@ -15,26 +16,31 @@ $news = new News($connection);
 $stmt = $news->read();
 $num = $stmt->rowCount();
 
+
 if($num > 0) {
 
-  $news_arr = array();
+  $news = array();
+  $news["news"] = array();
 
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
     extract($row);
-    $news_item = array(
+
+    $n = array(
       "id" => $id,
       "title" => $title,
       "description" => $description,
-      "url" => $url,
+      "link" => $link,
       "date" => $date
     );
 
-    array_push($news_arr, $new_item);
+    array_push($news["news"], $n);
   }
   // code response 200 - Ok
   http_response_code(200);
 
-  echo json_encode($news_arr);
+  echo json_encode($news);
+  //echo json_last_error_msg();
 } else {
   //code response 404 - page not found
   http_response_code(404);

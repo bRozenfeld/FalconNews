@@ -9,6 +9,9 @@ Display news related to cybersecurity field in the world
 * Pour vérifier l'installation, entrer dans la barre de votre navigateur
 * http://localhost/FalconNews
 * cliquer sur api/test.php et vous devriez voir apparaitre "Test" à l'écran
+*
+* POSTMAN : permet de réaliser des requêtes sur notre api
+* https://www.getpostman.com/downloads/
 
 ## Structure projet
 * api/ backend (php)

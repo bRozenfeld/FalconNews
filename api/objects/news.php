@@ -18,7 +18,27 @@ class News {
   }
 
   // function to create data
-  public function create(){}
+  public function create(){
+	  $query = "INSERT INTO " . $this->table_name . " SET title=:title, description=:description, url=:url, date=:date";
+	  
+	  $stmt = $this->connection->prepare($query);
+	  
+	  // sanitize
+	  $this->title=htmlspecialchars(strip_tags($this->title));
+	  $this->description=htmlspecialchars(strip_tags($this->description));
+	  $this->url=htmlspecialchars(strip_tags($this->url));
+	  $this->date=htmlspecialchars(strip_tags($this->date));
+	  
+	  // bind values
+	  $stmt->bindParam(":title", $this->title);
+	  $stmt->bindParam(":description", $this->description);
+	  $stmt->bindParam(":url", $this->url);
+	  $stmt->bindParam(":date", $this->date);
+	  
+	  $stmt->execute();
+	  
+	  return $stmt;
+  }
 
   // function to read data
   public function read(){

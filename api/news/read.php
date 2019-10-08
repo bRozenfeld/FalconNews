@@ -30,7 +30,7 @@ if($num > 0) {
       "id" => $id,
       "title" => $title,
       "description" => $description,
-      "link" => $link,
+      "url" => $url,
       "date" => $date
     );
 

@@ -22,7 +22,7 @@ class News {
 
   // function to read data
   public function read(){
-    $query = "SELECT n.id, n.title, n.date, n.description, n.link
+    $query = "SELECT n.id, n.title, n.date, n.description, n.url
               FROM " . $this->table_name . " n";
 
     $stmt = $this->connection->prepare($query);

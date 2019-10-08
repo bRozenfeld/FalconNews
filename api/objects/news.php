@@ -34,8 +34,23 @@ class News {
 
   // function to update data
   public function update(){}
-
   // function to delete data
-  public function delete(){}
+
+  public function delete(){
+	
+	//check whether the id exists or not
+	$stmt = $this->connection->prepare("SELECT * FROM ". $this->table_name ." WHERE id=?");
+	$stmt->execute([$this->id]); 
+	$test = $stmt->fetch();
+
+	//delete the row associated with the given id
+	if ($test) {
+	 
+		$query = "DELETE FROM ". $this->table_name . " WHERE id = " . $this->id ; 	
+		$stmt = $this->connection->prepare($query); 
+        return true;
+    }
+    return false;	  
+  }
 }
 ?>

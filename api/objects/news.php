@@ -53,7 +53,7 @@ class News {
   }
 
   // function to update data
-<<<<<<< HEAD
+
   public function update(){
 	$stmt = $this->connection->prepare("SELECT * FROM ". $this->table_name ." WHERE id=?");
 	$stmt->execute([$this->id]); 
@@ -79,12 +79,7 @@ class News {
   }
   
 
-  // function to delete data
-  public function delete(){
-	  
-=======
-  public function update(){}
-  // function to delete data
+
 
   public function delete(){
 	
@@ -101,7 +96,7 @@ class News {
         return true;
     }
     return false;	  
->>>>>>> 3cc0aaa1b6acbe8bee812c61165d90084700c4dd
+
   }
 }
 ?>

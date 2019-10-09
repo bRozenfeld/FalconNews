@@ -40,6 +40,7 @@ if($num > 0) {
   http_response_code(200);
 
   echo json_encode($news);
+  //return json_encode($news);
   //echo json_last_error_msg();
 } else {
   //code response 404 - page not found

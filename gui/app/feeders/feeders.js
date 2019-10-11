@@ -1,1 +1,1 @@
-var feeders = "3";
+var feeders = {};

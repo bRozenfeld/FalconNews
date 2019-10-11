@@ -1,15 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
   console.log("read-feeder.js load");
-
-  // div to display the list of urls
-  var urls = document.getElementById("feedUrls");
-
-  var jsonVar = getFeeders();
-
-  var jsonStr = JSON.stringify(jsonVar);
-
-
-  urls.innerHTML = jsonStr;
+  getFeeders();
 
 });
 
@@ -69,15 +60,5 @@ function updateFeeders(data) {
   divContainer.innerHTML = "";
   divContainer.appendChild(table);
 
-  //var urls = document.getElementById("feedUrls");
-  //var tr = document.createElement("tr");
 
-
-  /*
-  for(var i=0; i < jsonVar.length; i++) {
-    var item = jsonVar[i];
-    console.log(item);
-
-  }
-  */
 };

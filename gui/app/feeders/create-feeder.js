@@ -19,8 +19,9 @@ function addFeeder() {
   request.onload = function () {
     if (request.status === 200 && request.readyState === request.DONE) {
       var info = JSON.parse(request.responseText);
+      
     } else {
-      console.log(request.responseText);
+      //console.log(request.responseText);
     }
   };
   request.send(JSON.stringify({

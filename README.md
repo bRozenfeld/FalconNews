@@ -28,3 +28,9 @@ Display news related to cybersecurity field in the world
 * https://rss2json.com/docs -> Website to convert xml rss feed to json
 * https://stackoverflow.com/questions/51647764/how-to-parse-an-rss-feed-using-javascript-external-domain -> explication to avoid the cors errors while making ajax request to other website
 
+## update
+Pour que les nouvelles fonctionnalités fonctionnent vous devez:
+* ajouter la table "feeder" dans la abse de données
+* table composé de 2 colonnes: id (primary key, not null, auto increment, int), url(varchar 255, not null)
+* se rendre dans le navigateur à l'adresse: http://localhost/FalconNews/gui/app/feeders/feeders.html
+

@@ -9,19 +9,17 @@
   <!-- custom css -->
   <link href="app/assets/css/style.css" rel="stylesheet" />
 
+  <script src="create-feeder.js"></script>
 </head>
 <body>
-<ul>
-  <li><a href="#">News</a></li>
-  <li><a href="app/feeders/feeders.html">Feeders</a></li>
-  <li><a href="#">Auth</a></li>
-</ul>
-
-<!-- app will be injected here -->
-<div id="root"></div>
-
-<!-- app js script -->
-<script src="app/app.js"></script>
+  <div class="field has-addons">
+    <div class="control is-expanded">
+      <input id="url" type="text" class="input" placeholder="RSS URL, ex: https://website.com/rss">
+    </div>
+    <div class="control">
+      <a class="button is-primary" onclick="addFeeder()">Add</a>
+    </div>
+  </div>
 
 
 </body>

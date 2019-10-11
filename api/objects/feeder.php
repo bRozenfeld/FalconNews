@@ -12,7 +12,7 @@ class Feeder {
 
   public function create() {
 
-    $query = ("INSERT INTO " . $this->table_name . "(url) VALUES(:url)");
+    $query = "INSERT INTO " . $this->table_name . "(url) VALUES(:url)";
 
     $stmt = $this->connection->prepare($query);
 
@@ -22,6 +22,13 @@ class Feeder {
       return true;
     }
     return false;
+  }
+
+  public function read() {
+    $query = "SELECT f.id, f.url FROM " . $this->table_name . " f";
+    $stmt = $this->connection->prepare($query);
+    $stmt->execute();
+    return $stmt;
   }
 }
 ?>

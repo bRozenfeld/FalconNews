@@ -21,7 +21,6 @@ $json = '{
   "url":"test"
 }';
 */
-echo $json;
 
 //converts it into php object
 $data = json_decode($json);

@@ -19,8 +19,8 @@ $num = $stmt->rowCount();
 
 if($num > 0) {
 
-  $news = array();
-  $news["news"] = array();
+  $new = array();
+  $new["news"] = array();
 
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -34,12 +34,12 @@ if($num > 0) {
       "date" => $date
     );
 
-    array_push($news["news"], $n);
+    array_push($new["news"], $n);
   }
   // code response 200 - Ok
   http_response_code(200);
 
-  echo json_encode($news);
+  echo json_encode($new);
   //return json_encode($news);
   //echo json_last_error_msg();
 } else {

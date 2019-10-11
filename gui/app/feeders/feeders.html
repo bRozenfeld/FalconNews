@@ -10,17 +10,23 @@
   <link href="app/assets/css/style.css" rel="stylesheet" />
 
   <script src="create-feeder.js"></script>
+  <script src="read-feeder.js"></script>
+  <script src="delete-feeder.js"></script>
 </head>
 <body>
-  <div class="field has-addons">
-    <div class="control is-expanded">
-      <input id="url" type="text" class="input" placeholder="RSS URL, ex: https://website.com/rss">
-    </div>
-    <div class="control">
-      <a class="button is-primary" onclick="addFeeder()">Add</a>
+  <div class="container">
+    <div class="field has-addons">
+      <div class="control is-expanded">
+        <input id="url" type="text" class="input" placeholder="RSS URL, ex: https://website.com/rss">
+      </div>
+      <div class="control">
+        <a class="button is-primary" onclick="addFeeder()">Add</a>
+      </div>
     </div>
   </div>
 
+  <div class="container" id="feedUrls">
 
+  </div>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 <?php
 //required headers
 header("Access-Control-Allow-Origin: *");
@@ -36,3 +37,4 @@ if($news->delete())
   echo json_encode(array("message" => "Unable to delete this row."));
 }
 ?>
+

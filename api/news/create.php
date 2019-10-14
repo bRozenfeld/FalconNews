@@ -26,7 +26,6 @@ if(
     !empty($data->url) &&
     !empty($data->date)
 ){
-
     // set news property values
     $news->title = $data->title;
     $news->description = $data->description;

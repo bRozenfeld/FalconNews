@@ -42,5 +42,10 @@ class Feeder {
     }
     return false;
   }
+
+  // Check if the url of the feed is valid
+  private function checkURL(url) {
+    echo "test";
+  }
 }
 ?>

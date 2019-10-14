@@ -13,6 +13,7 @@ $connection = $database->getConnection();
 $feeder = new Feeder($connection);
 
 $json = file_get_contents("php://input");
+
 $data = json_decode($json);
 
 if(!empty($data->id)) {
@@ -20,7 +21,7 @@ if(!empty($data->id)) {
 
   if($feeder->delete()) {
     http_response_code(200);
-    echo json_encode(array("message" => "URL RSS was deleted successfully"));
+    echo json_encode(array("message" => "URL was deleted successfully"));
   }
 } else {
   http_response_code(400);

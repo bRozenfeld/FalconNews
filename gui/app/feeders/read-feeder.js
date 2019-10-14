@@ -27,7 +27,8 @@ function getFeeders() {
 
 // Update the list of rss feeds
 function updateFeeders(data) {
-  console.log("Enter updateFeeders(jsonVar) method -> jsonVar: " + data);
+  console.log("Enter updateFeeders(jsonVar) method -> jsonVar: ");
+  console.log(data);
 
   // Extract value for headers
   var col = [];
@@ -50,7 +51,7 @@ function updateFeeders(data) {
       tabCell.innerHTML = data[i][col[j]];
 
       var tabDeleteCell = tr.insertCell(-1);
-      var strHtml = "<a onclick='deleteFeeder()' class='button'><span class='icon'><i class='fas fa-trash'></i></span></a>";
+      var strHtml = "<a id=" + data[i][col[j-1]] + " onclick='deleteFeeder(this.id)' class='button'><span class='icon'><i class='fas fa-trash'></i></span></a>";
       tabDeleteCell.innerHTML = strHtml;
     }
   }

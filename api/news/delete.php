@@ -18,18 +18,17 @@ $news = new News($connection);
 $data = json_decode(file_get_contents("php://input"));
 $news->id = $data->id;
 
-
 //check if the row associated to the given id has been correctly deleted
-if($news->delete()) 
-{	
+if($news->delete())
+{
   // code response 200 - Ok
   http_response_code(200);
   echo json_encode(array("message" => "Row succesfully deleted"));
 
   echo json_encode($news);
-  
-  
-} else 
+
+
+} else
 {
   //code response 404 - page not found
   http_response_code(404);
@@ -37,4 +36,3 @@ if($news->delete())
   echo json_encode(array("message" => "Unable to delete this row."));
 }
 ?>
-

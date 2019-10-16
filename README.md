@@ -5,9 +5,6 @@ Display news related to cybersecurity field in the world
 ## Mettre votre nom à côté de la tâche que vous effectuer
 
 * Mettre à jour la page automatiquement après avoir ajouter / supprimer un élément --->HAITAM
-* Réaliser une belle interface graphique
-* Réaliser un contrôl qu'une URL est bien valide avant de l'ajouter
-* Mettre à jour la page automatiquement après avoir ajouté / supprimé un élément 
 * Réaliser une belle interface graphique -> Etienne
 * Réaliser un contrôle sur un URL pour vérifier qu'il est bien valide avant de l'ajouter
 * Mettre en place un système d'authentification -> Benjamin

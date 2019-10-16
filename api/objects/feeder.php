@@ -1,4 +1,5 @@
 <?php
+
 class Feeder {
   private $connection;
   private $table_name = "feeder";
@@ -45,10 +46,14 @@ class Feeder {
 
   
   // Check if the url of the feed is valid
+<<<<<<< HEAD
   public function checkURL($url) {
-    echo "test";
+=======
+
+>>>>>>> 2f9bbdaaa3eac21648a6526ece6b149d4c81a80d
 	return true;
   }
+<<<<<<< HEAD
   
    
   //check if the number of existing url is under 15
@@ -66,5 +71,8 @@ class Feeder {
 	   }
 	   return true;  
    }			
+=======
+  
+>>>>>>> 2f9bbdaaa3eac21648a6526ece6b149d4c81a80d
 }
 ?>

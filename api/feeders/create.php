@@ -20,6 +20,7 @@ $json = file_get_contents('php://input');
 $data = json_decode($json);
 
 // make sure data is not empty
+<<<<<<< HEAD
 if(!empty($data->url)) {
 	
 	
@@ -29,12 +30,16 @@ if(!empty($data->url)) {
 		if($feeder->checkURL($data->url)) {
 		  //set feeder property value
 		  $feeder->url = $data->url;
+=======
+
+>>>>>>> 2f9bbdaaa3eac21648a6526ece6b149d4c81a80d
 
 		  //create the feeder
 		  if($feeder->create()) {
 			// set response code - 201 created
 			http_response_code(201);
 
+<<<<<<< HEAD
 			// tell the user
 			echo json_encode(array("message" => "New feed added."));
 		  } else {
@@ -53,6 +58,9 @@ if(!empty($data->url)) {
 		echo json_encode(array("message" => "maximum url (15) has already been reach "));
 	  }
 	
+=======
+
+>>>>>>> 2f9bbdaaa3eac21648a6526ece6b149d4c81a80d
 // data incomplete
 } else {
   // 400 - bad request

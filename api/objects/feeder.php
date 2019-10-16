@@ -1,4 +1,5 @@
 <?php
+
 class Feeder {
   private $connection;
   private $table_name = "feeder";
@@ -44,8 +45,10 @@ class Feeder {
   }
 
   // Check if the url of the feed is valid
+  /*
   private function checkURL(url) {
     echo "test";
   }
+  */
 }
 ?>

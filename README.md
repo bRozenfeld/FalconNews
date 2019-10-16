@@ -3,7 +3,7 @@ Display news related to cybersecurity field in the world
 
 # Travail à réaliser
 ## Mettre votre nom à côté de la tâche que vous effectuer
-* Mettre à jour la page automatiquement après avoir ajouter / supprimer un élément 
+* Mettre à jour la page automatiquement après avoir ajouter / supprimer un élément --->HAITAM
 * Réaliser une belle interface graphique
 * Réaliser un contrôl qu'une URL est bien valide avant de l'ajouter
 * Mettre en place un système d'authentification -> Benjamin

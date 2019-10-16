@@ -23,7 +23,7 @@ $data = json_decode($json);
 if(
   !empty($data->url)
 ) {
-    if(Util::checkURL($data->url)) {
+    if(/*Util::checkURL($data->url)*/true) {
       //set feeder property value
       $feeder->url = $data->url;
 
@@ -39,9 +39,11 @@ if(
         http_response_code(503);
         echo json_encode(array("message" => "Unable to add this feed"));
       }
+	  
   } else {
     http_response_code(400);
     echo json_encode(array("message" => "Url is not valid rss feed."));
+  
   }
 // data incomplete
 } else {

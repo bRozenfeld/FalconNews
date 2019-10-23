@@ -1,0 +1,14 @@
+Body{
+	 background: linear-gradient(to bottom,white, DeepSkyBlue) no-repeat center center fixed;
+	
+}
+
+#login-form{
+	background-image: linear-gradient(to bottom,white, white);
+	margin : 50px;
+	padding : 15px;
+}
+#submit{
+  display: block;
+  margin : auto;
+}

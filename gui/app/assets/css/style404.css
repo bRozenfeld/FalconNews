@@ -1,0 +1,82 @@
+.clearfix:before,
+.clearfix:after {
+	display: table;
+	content: ' ';
+}
+body {
+	background: linear-gradient(to bottom,white, red) no-repeat  fixed;
+}
+
+.page-404 .outer {
+	position: absolute;
+	top: 0;
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+.page-404 .outer .middle {
+	display: table-cell;
+	vertical-align: middle;
+}
+
+.page-404 .outer .middle .inner {
+	width: 300px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.page-404 .outer .middle .inner .inner-circle {
+	height: 300px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	text-align: center;
+}
+
+
+
+.page-404 .outer .middle .inner .inner-circle:hover span {
+	color: #F01F1F;
+}
+
+
+
+.page-404 .outer .middle .inner .inner-circle span {
+	font-size: 10.5em;
+	font-weight: 700;
+	line-height: 1.8em;
+	display: block;
+	-webkit-transition: all .4s;
+	transition: all .4s;
+	text-align: center;
+	
+}
+
+
+.page-404 .outer .middle .inner .inner-status1 {
+	font-size: 3.5em;
+	font-weight: 700;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+	font-family:fantasy;
+}
+
+.page-404 .outer .middle .inner .inner-status2 {
+	font-size: 20px;
+	display: block;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	text-align: center;
+	
+}
+
+.page-404 .outer .middle .inner .inner-detail {
+	font-size: 1.5em;
+	line-height: 2em;
+	display: block;
+	margin-bottom: 10px;
+	text-align: center;
+	
+}

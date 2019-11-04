@@ -16,7 +16,7 @@ Pour que les nouvelles fonctionnalités fonctionnent vous devez:
 * Réaliser un contrôle sur un URL pour vérifier qu'il est bien valide avant de l'ajouter
 * Mettre en place un système d'authentification -> Benjamin
 * Mettre en place des fonctions qui vérifient qu'il n'y a pas plus de 15 URL ->Dimitri
-* Afficher des news sur plusieurs écrans
+* Afficher des news sur plusieurs écrans->Benjamin
 * Lier les news avec les URL de feeder->Dimitri
 
 

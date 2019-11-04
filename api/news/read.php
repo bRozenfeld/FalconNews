@@ -17,10 +17,10 @@ $stmt = $news->read();
 $num = $stmt->rowCount();
 
 
-if($num > 0) {
+if($num == 1) {
 
   $new = array();
-  $new["news"] = array();
+  //$new["news"] = array();
 
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
@@ -31,10 +31,16 @@ if($num > 0) {
       "title" => $title,
       "description" => $description,
       "url" => $url,
-      "date" => $date
+      "published_date" => $published_date
     );
 
-    array_push($new["news"], $n);
+    //array_push($new["news"], $n);
+    array_push($new, $n);
+
+    $news->id = $id;
+    $news->priority = $priority-2;
+    $news->isDisplayed = true;
+    $news->update();
   }
   // code response 200 - Ok
   http_response_code(200);

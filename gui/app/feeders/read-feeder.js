@@ -17,7 +17,6 @@ function getFeeders() {
       var jsonVar = JSON.parse(request.responseText);
       console.log("getFeeders() Success: " + jsonVar);
       updateFeeders(jsonVar);
-
     } else {
       console.log(request.responseText);
     }

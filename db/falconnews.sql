@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS feeder;
 DROP TABLE IF EXISTS news;
+DROP TABLE IF EXISTS feeder;
 
 CREATE TABLE feeder (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -13,6 +13,8 @@ CREATE TABLE news (
   description TEXT NOT NULL,
   url VARCHAR(255) NOT NULL,
   feeder_id INT,
+  is_displayed BOOLEAN NOT NULL DEFAULT false,
+  priority INT NOT NULL DEFAULT 20,
   CONSTRAINT fk_feeder
   FOREIGN KEY (feeder_id) REFERENCES feeder(id)
 ) ENGINE = InnoDB;

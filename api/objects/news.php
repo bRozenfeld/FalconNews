@@ -93,6 +93,8 @@ class News {
     $stmt->bindParam(":is_displayed", $this->isDisplayed);
     $stmt->bindParam(":id", $this->id);
 
+    $stmt->execute();
+    
     return $stmt;
   }
 

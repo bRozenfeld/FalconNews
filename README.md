@@ -1,6 +1,13 @@
 # FalconNews
 Display news related to cybersecurity field in the world 
 
+## update
+Pour que les nouvelles fonctionnalités fonctionnent vous devez:
+* se rendre dans phpmyadmin, se connecter et aller dans la base de donnée falconnewsdb
+* aller dans l'onglet "Importer"
+* récupérer le fichier "falconnewsdb.sql" située dans le dossier "db"
+* cliquer sur exécuter
+
 # Travail à réaliser
 ## Mettre votre nom à côté de la tâche que vous effectuer
 
@@ -40,9 +47,5 @@ Display news related to cybersecurity field in the world
 * https://rss2json.com/docs -> Website to convert xml rss feed to json
 * https://stackoverflow.com/questions/51647764/how-to-parse-an-rss-feed-using-javascript-external-domain -> explication to avoid the cors errors while making ajax request to other website
 
-## update
-Pour que les nouvelles fonctionnalités fonctionnent vous devez:
-* ajouter la table "feeder" dans la abse de données
-* table composé de 2 colonnes: id (primary key, not null, auto increment, int), url(varchar 255, not null)
-* se rendre dans le navigateur à l'adresse: http://localhost/FalconNews/gui/app/feeders/feeders.html
+
 

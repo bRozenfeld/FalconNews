@@ -44,27 +44,28 @@ class Feeder {
     return false;
   }
 
-  
+
   // Check if the url of the feed is valid
 
   public function checkURL($url) {
-	return true;
+	   return true;
   }
 
   //check if the number of existing url is under 15
   public function checkMaxURL(){
-	   
-	// count database's row number
-	$query = "SELECT f.id, f.url FROM " . $this->table_name . " f";
-	$stmt = $this->connection->prepare($query);
+
+	 // count database's row number
+	  $query = "SELECT f.id, f.url FROM " . $this->table_name . " f";
+	  $stmt = $this->connection->prepare($query);
     $stmt->execute();
     $nRows = $stmt->rowCount();
-	echo $nRows;
-	
+	  echo $nRows;
+
 	   if ($nRows>=15){
-		   return false;
+		     return false;
 	   }
-	   return true;  
-   }			
+
+	   return true;
+   }
 }
 ?>

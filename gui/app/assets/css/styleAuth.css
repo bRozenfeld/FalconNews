@@ -1,3 +1,4 @@
+
 Body{
 	 background: linear-gradient(to bottom,white, DeepSkyBlue) no-repeat center center fixed;
 	
@@ -11,4 +12,14 @@ Body{
 #submit{
   display: block;
   margin : auto;
+}
+
+.valid:before {
+  position: relative;
+  content: "✔";
+}
+
+.invalid:before {
+  position: relative;
+  content: "❌";
 }

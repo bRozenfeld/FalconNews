@@ -1,10 +1,6 @@
-.clearfix:before,
-.clearfix:after {
-	display: table;
-	content: ' ';
-}
+
 body {
-	background: linear-gradient(to bottom,white, red) no-repeat  fixed;
+	background: linear-gradient(to bottom,white, DeepSkyBlue) no-repeat  fixed;
 }
 
 .page-404 .outer {
@@ -36,7 +32,7 @@ body {
 
 
 .page-404 .outer .middle .inner .inner-circle:hover span {
-	color: #F01F1F;
+	color: DeepSkyBlue;
 }
 
 

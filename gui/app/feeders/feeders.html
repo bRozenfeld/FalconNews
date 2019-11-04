@@ -18,7 +18,7 @@
   <div class="container">
     <div class="field has-addons">
       <div class="control is-expanded">
-        <input id="url" type="text" class="input" placeholder="RSS URL, ex: https://website.com/rss">
+        <input id="url" type="url" class="input" placeholder="RSS URL, ex: https://website.com/rss" pattern="https://.*" required>
       </div>
       <div class="control">
         <a class="button is-primary"  onclick="javascript:location.reload(false),addFeeder()"   >Add</a>

@@ -1,0 +1,67 @@
+<html lang="fr">
+	<head>
+	  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+	  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="..\assets\css\styleAuth.css" />
+	  <script src="../auth/new_pwd.js"></script>
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <title>Falcon-News Reset Password</title>
+	</head>
+	
+	<body>
+		<div id="login">
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+						<form id="login-form"  class="was-validated,text-center border  ">
+							
+							<div class="text-center">
+								<img src="..\assets\images\cadenas.png"  class="img-responsive" >
+							</div>
+							
+							<div class="form-group">
+								<h2 class="text-center text-info">Change Password</h2>
+								<div class="input-group mb-3">
+								  <div class="input-group-prepend"><span class="input-group-text"><img src="..\assets\images\key.png" alt="pwd"/></span></div>
+								  <input  id="password1" name="pwd" placeholder="new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control"  type="password" onkeyup="Check()"required>
+								 </div>
+								 
+								 <div><input type="checkbox" onclick="myFunction()">  Show Password </div>
+								 <div class="row">
+										<div class="col-sm-6">
+										<span id="length" class="invalid" ></span> 8 Characters Long<br>
+										<span id="capital" class="invalid" ></span> One Uppercase Letter
+										</div>
+										<div class="col-sm-6">
+										<span id="letter" class="invalid" ></span> One Lowercase Letter<br>
+										<span id="number" class="invalid" ></span> One Number
+										</div>
+								</div>
+								 
+								<div class="input-group-prepend mb-3">								 
+								  <div class="input-group-prepend"><span class="input-group-text"><img src="..\assets\images\key.png" alt="pwd"/></span></div>
+								  <input  id="password2" name="pwd" placeholder="Confirm new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control"  type="password" onkeyup="checkPasswordMatch()" required>
+								</div>
+								
+								<div class="row">
+									<div class="col-sm-12">
+									<span id="pwmatch" class="" ></span> 
+									</div>
+								</div>
+																	
+								<button id="submit" type="submit" class="btn btn-lg btn-primary  btn-block" >Change Password </button>
+							</div>
+				
+						</form>
+					</div>
+		       </div>
+            </div>
+        </div>
+    </div>
+		
+  </body>
+</html>

@@ -31,7 +31,8 @@ if($num == 1) {
       "title" => $title,
       "description" => $description,
       "url" => $url,
-      "published_date" => $published_date
+      "published_date" => $published_date,
+      "priority" => $priority
     );
 
     //array_push($new["news"], $n);

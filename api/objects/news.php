@@ -58,7 +58,6 @@ class News {
   }
 
   // function to update data
-
   public function update(){
 
     $query = "UPDATE " . $this->table_name .
@@ -75,25 +74,14 @@ class News {
     return $stmt;
   }
 
-
-
-
   public function delete(){
-
-	//check whether the id exists or not
-	$stmt = $this->connection->prepare("SELECT * FROM ". $this->table_name ." WHERE id=?");
-	$stmt->execute([$this->id]);
-	$test = $stmt->fetch();
-
-	//delete the row associated with the given id
-	if ($test) {
-
-		$query = "DELETE FROM ". $this->table_name . " WHERE id = " . $this->id ;
-		$stmt = $this->connection->prepare($query);
-        return true;
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = :d";
+    $stmt = $this->connection->prepare($query);
+    $stmt->bindParam(":id", $this->id);
+    if($stmt->execute()) {
+      return true;
     }
     return false;
-
   }
 }
 ?>

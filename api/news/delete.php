@@ -23,16 +23,14 @@ if($news->delete())
 {
   // code response 200 - Ok
   http_response_code(200);
-  echo json_encode(array("message" => "Row succesfully deleted"));
+  echo json_encode(array("message" => "News succesfully deleted"));
 
   echo json_encode($news);
 
-
-} else
-{
+} else {
   //code response 404 - page not found
   http_response_code(404);
 
-  echo json_encode(array("message" => "Unable to delete this row."));
+  echo json_encode(array("message" => "Unable to delete this news."));
 }
 ?>

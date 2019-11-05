@@ -58,31 +58,7 @@ class News {
   }
 
   // function to update data
-
   public function update(){
-    /*
-	$stmt = $this->connection->prepare("SELECT * FROM ". $this->table_name ." WHERE id=?");
-	$stmt->execute([$this->id]);
-	$test = $stmt->fetch();
-
-	$this->title=htmlspecialchars(strip_tags($this->title));
-    $this->url=htmlspecialchars(strip_tags($this->url));
-    $this->description=htmlspecialchars(strip_tags($this->description));
-    $this->id=htmlspecialchars(strip_tags($this->id));
-	// bind new values
-	$stmt->bindParam(':title', $this->title);
-    $stmt->bindParam(':description', $this->description);
-	$stmt->bindParam(':url', $this->url);
-    $stmt->bindParam(':id', $this->id);
-	//delete the row associated with the given id
-	if ($test) {
-
-		$query = "UPDATE" . $this->table_name . "n SET n.title = :title,n.description = :description,n.url = :url  WHERE id = " . $this->id ;
-		$stmt = $this->connection->prepare($query);
-        return true;
-    }
-    return false;
-    */
 
     $query = "UPDATE " . $this->table_name .
     " SET priority = :priority, is_displayed = :is_displayed
@@ -94,29 +70,18 @@ class News {
     $stmt->bindParam(":id", $this->id);
 
     $stmt->execute();
-    
+
     return $stmt;
   }
 
-
-
-
   public function delete(){
-
-	//check whether the id exists or not
-	$stmt = $this->connection->prepare("SELECT * FROM ". $this->table_name ." WHERE id=?");
-	$stmt->execute([$this->id]);
-	$test = $stmt->fetch();
-
-	//delete the row associated with the given id
-	if ($test) {
-
-		$query = "DELETE FROM ". $this->table_name . " WHERE id = " . $this->id ;
-		$stmt = $this->connection->prepare($query);
-        return true;
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = :d";
+    $stmt = $this->connection->prepare($query);
+    $stmt->bindParam(":id", $this->id);
+    if($stmt->execute()) {
+      return true;
     }
     return false;
-
   }
 }
 ?>

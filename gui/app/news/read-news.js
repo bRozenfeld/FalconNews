@@ -1,8 +1,10 @@
 // listener on document load
 document.addEventListener("DOMContentLoaded", function() {
   console.log("read-news.js loaded");
+  updateFeeders();
   getNews();
-  setInterval(update, 180000); // refresh each 3 minutes
+  setInterval(update, 180000); // refresh the news each 3 minutes
+  setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 });
 
 // listener on keystroke
@@ -11,6 +13,7 @@ document.addEventListener("keyup", function(event) {
   openFullScreen();
 });
 
+// Get the news to display
 function getNews() {
   console.log("Entering getNews() method");
 
@@ -32,6 +35,7 @@ function getNews() {
   request.send();
 };
 
+// update the news displayed
 function updateNews() {
   var id = document.getElementById("id");
   var priority = document.getElementById("priority");
@@ -62,6 +66,7 @@ function updateNews() {
   }
 };
 
+// delete the news
 function deleteNews(id) {
   var urlDest = "http://localhost/FalconNews/api/news/delete.php";
   var method = "DELETE";
@@ -124,4 +129,50 @@ function openFullScreen() {
   } else if (elem.msRequestFullscreen) { /* IE/Edge */
     elem.msRequestFullscreen();
   }
+};
+
+
+
+function updateFeeder(data) {
+  var urlDest = "http://localhost/FalconNews/api/feeders/update.php";
+  var method = "POST";
+  var request = new XMLHttpRequest();
+  request.open(method, urlDest);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.onload = function() {
+    if (request.status === 200 && request.readyState === request.DONE) {
+      console.log(request.responseText);
+      var jsonVar = JSON.parse(request.responseText);
+      console.log("updateFeeder() Success: " + jsonVar);
+    } else {
+      console.log(request.responseText);
+    }
+  }
+  request.send(JSON.stringify({
+    id: data.id,
+    url: data.url
+  }));
+}
+
+// update the feeders
+function updateFeeders() {
+  console.log("Entering getFeeders() method");
+
+  var urlDest = "http://localhost/FalconNews/api/feeders/read.php";
+  var method = "GET";
+  var request = new XMLHttpRequest();
+  request.open(method, urlDest);
+  request.setRequestHeader("Content-Type", "application/json");
+  request.onload = function() {
+    if (request.status === 200 && request.readyState === request.DONE) {
+      var data = JSON.parse(request.responseText);
+      console.log("getFeeders() Success: " + data);
+      for(var i = 0; i < data.length; i++) {
+        updateFeeder(data[i]);
+      }
+    } else {
+      console.log(request.responseText);
+    }
+  }
+  request.send();
 };

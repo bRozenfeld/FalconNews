@@ -1,21 +1,21 @@
 // listener on document load
 document.addEventListener("DOMContentLoaded", function() {
-  console.log("read-news.js loaded");
+  //console.log("read-news.js loaded");
   updateFeeders();
   getNews();
-  setInterval(update, 180000); // refresh the news each 3 minutes
+  setInterval(update, 15000); // refresh the news each 3 minutes
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 });
 
 // listener on keystroke
 document.addEventListener("keyup", function(event) {
-  console.log("keyup event triggered");
+  //console.log("keyup event triggered");
   openFullScreen();
 });
 
 // Get the news to display
 function getNews() {
-  console.log("Entering getNews() method");
+  //console.log("Entering getNews() method");
 
   var urlDest = "http://localhost/FalconNews/api/news/read.php";
   var method = "GET";
@@ -25,11 +25,11 @@ function getNews() {
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var jsonVar = JSON.parse(request.responseText);
-      console.log("getNews() success: " + jsonVar);
+      //console.log("getNews() success: " + jsonVar);
       displayNews(jsonVar);
     } else {
       var jsonVar = JSON.parse(request.responseText);
-      console.log("getNews() failed: " + request.responseText)
+      //console.log("getNews() failed: " + request.responseText)
     }
   }
   request.send();
@@ -39,35 +39,39 @@ function getNews() {
 function updateNews() {
   var id = document.getElementById("id");
   var priority = document.getElementById("priority");
-  var prioVal = priority.value + 1;
+  var prioVal = priority.innerHTML - 1;
+  console.log(prioVal);
 
   if(prioVal > 0) {
     var urlDest = "http://localhost/FalconNews/api/news/update.php";
-    var method = "PUT";
+    var method = "POST";
     var request = new XMLHttpRequest();
     request.open(method, urlDest);
     request.setRequestHeader("Content-Type", "application/json");
     request.onload = function() {
       if (request.status === 200 && request.readyState === request.DONE) {
+        //console.log(request.responseText);
         var jsonVar = JSON.parse(request.responseText);
         console.log("updateNews() success: " + jsonVar);
       } else {
+        //console.log(request.responseText);
         var jsonVar = JSON.parse(request.responseText);
         console.log("updateNews() failed: " + request.responseText);
       }
     }
     request.send(JSON.stringify({
-      id: id.value,
-      is_displayed: false,
+      id: id.innerHTML,
+      is_displayed: "0",
       priority: prioVal
     }));
   } else {
-    deleteNews(id.value);
+    deleteNews(id.innerHTML);
   }
 };
 
 // delete the news
 function deleteNews(id) {
+  console.log("entrer deletenews()");
   var urlDest = "http://localhost/FalconNews/api/news/delete.php";
   var method = "DELETE";
   var request = new XMLHttpRequest();
@@ -75,11 +79,12 @@ function deleteNews(id) {
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
+      console.log(request.responseText);
       var jsonVar = JSON.parse(request.responseText);
-      console.log("deleteNews() success: " + jsonVar);
+      //console.log("deleteNews() success: " + jsonVar);
     } else {
       var jsonVar = JSON.parse(request.responseText);
-      console.log("updateNews() failed: " + request.responseText)
+      //console.log("updateNews() failed: " + request.responseText)
     }
   }
   request.send(JSON.stringify({
@@ -95,8 +100,8 @@ function update() {
 
 // function to display the news on the screen
 function displayNews(data) {
-  console.log("Enter displayNews(data) method -> jsonVar: ");
-  console.log(data);
+  //console.log("Enter displayNews(data) method -> jsonVar: ");
+  //console.log(data);
 
   var title = document.getElementById("title");
   title.innerHTML = data[0].title;
@@ -115,6 +120,7 @@ function displayNews(data) {
 
   var priority = document.getElementById("priority");
   priority.innerHTML = data[0].priority;
+
 };
 
 // function to open the document in full screen mode
@@ -141,11 +147,11 @@ function updateFeeder(data) {
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
-      console.log(request.responseText);
+      //console.log(request.responseText);
       var jsonVar = JSON.parse(request.responseText);
-      console.log("updateFeeder() Success: " + jsonVar);
+      //console.log("updateFeeder() Success: " + jsonVar);
     } else {
-      console.log(request.responseText);
+      //console.log(request.responseText);
     }
   }
   request.send(JSON.stringify({
@@ -156,7 +162,7 @@ function updateFeeder(data) {
 
 // update the feeders
 function updateFeeders() {
-  console.log("Entering getFeeders() method");
+  //console.log("Entering getFeeders() method");
 
   var urlDest = "http://localhost/FalconNews/api/feeders/read.php";
   var method = "GET";
@@ -166,12 +172,12 @@ function updateFeeders() {
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var data = JSON.parse(request.responseText);
-      console.log("getFeeders() Success: " + data);
+      //console.log("getFeeders() Success: " + data);
       for(var i = 0; i < data.length; i++) {
         updateFeeder(data[i]);
       }
     } else {
-      console.log(request.responseText);
+      //console.log(request.responseText);
     }
   }
   request.send();

@@ -17,7 +17,7 @@ CREATE TABLE news (
   is_displayed BOOLEAN NOT NULL DEFAULT false,
   priority INT NOT NULL DEFAULT 20,
   CONSTRAINT fk_feeder
-  FOREIGN KEY (feeder_id) REFERENCES feeder(id)
+  FOREIGN KEY (feeder_id) REFERENCES feeder(id) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 CREATE TABLE user (

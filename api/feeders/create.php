@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 
 include_once '../config/database.php';
 include_once '../objects/feeder.php';
-
+include_once '../util/util.php';
 
 $database = new Database();
 $connection = $database->getConnection();

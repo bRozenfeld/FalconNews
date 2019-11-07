@@ -28,13 +28,14 @@ class Feeder {
     if($stmt->execute()) {
       $last_id = $this->connection->lastInsertId();
 
-      $query = "INSERT INTO news (title, description, url, published_date, feeder_id)";
-      $query .= "VALUE(:title,:description,:url,:published_date,:feeder_id)";
+      $query = "INSERT INTO news (title, description, url, url_img, published_date, feeder_id)";
+      $query .= "VALUE(:title,:description,:url, :url_img, :published_date,:feeder_id)";
       foreach($news as $n) {
           $stmt = $this->connection->prepare($query);
           $stmt->bindParam(":title", $n["title"]);
           $stmt->bindParam(":description", $n["description"]);
           $stmt->bindParam(":url", $n["url"]);
+		  $stmt->bindParam(":url_img", $n["url_img"]);
           $stmt->bindParam(":published_date", $n["published_date"]);
           $stmt->bindParam(":feeder_id", $last_id);
           if(!$stmt->execute()) {
@@ -91,13 +92,14 @@ class Feeder {
       }
     }
 
-    $query = "INSERT INTO news (title, description, url, published_date, feeder_id)";
-    $query .= "VALUE(:title,:description,:url,:published_date,:feeder_id)";
+    $query = "INSERT INTO news (title, description, url, url_img, published_date, feeder_id)";
+    $query .= "VALUE(:title,:description,:url,:url_img,:published_date,:feeder_id)";
     foreach($news as $n) {
         $stmt = $this->connection->prepare($query);
         $stmt->bindParam(":title", $n["title"]);
         $stmt->bindParam(":description", $n["description"]);
         $stmt->bindParam(":url", $n["url"]);
+		$stmt->bindParam(":url_img", $n["url_img"]);
         $stmt->bindParam(":published_date", $n["published_date"]);
         $stmt->bindParam(":feeder_id", $this->id);
         if(!$stmt->execute()) {
@@ -111,7 +113,20 @@ class Feeder {
   // Check if the url of the feed is valid
   public function checkURL($url) {
     if(@simplexml_load_file($url)){
-	   return true;
+		
+		//check if all tags needed can be found in the feed
+		$testDom = new DOMDocument();
+		$testDom->load ($url);
+		
+		$title = $testDom->getElementsByTagName('title');
+		$link = $testDom->getElementsByTagName('link');
+		$description = $testDom->getElementsByTagName('description');
+		$pubDate = $testDom->getElementsByTagName('pubDate');
+		
+		if(($title->length!=0) && ($link->length!=0) && ($description->length!=0) && ($pubDate->length!=0)){
+			return true;
+		}
+	   
    } else {
      return false;
    }
@@ -137,13 +152,20 @@ class Feeder {
    private function parseFeedToNews() {
      $news = array();
      $feed = simplexml_load_file($this->url);
+	 $dom = new DOMDocument();
+	 $dom->load ($this->url);
 
      foreach($feed->channel->item as $item) {
+		 //get the image url from the item
+		 $image = $dom->getElementsByTagNameNS("media","content");
+		 $urlImg = $image->item(0)->getAttribute('url');
+		 //put each needed tag of item in an array
        $n = array (
          "title" => $item->title,
          "url" => $item->link,
          "description" => $item->description,
-         "published_date" => date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $item->pubDate)))
+         "published_date" => date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $item->pubDate))),
+		 "url_img" => $urlImg
        );
        array_push($news, $n);
      }

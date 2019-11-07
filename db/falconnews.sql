@@ -13,6 +13,7 @@ CREATE TABLE news (
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   url VARCHAR(255) NOT NULL UNIQUE,
+  url_img VARCHAR(255) NOT NULL,
   feeder_id INT,
   is_displayed BOOLEAN NOT NULL DEFAULT false,
   priority INT NOT NULL DEFAULT 20,

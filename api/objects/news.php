@@ -83,5 +83,12 @@ class News {
     }
     return false;
   }
+	
+  public function update_display() {
+    $query = "UPDATE " . $this->table_name . " SET is_displayed = false WHERE id = :id";
+    $stmt = $this->connection->prepare($query);
+    $stmt->bindParam(":id", $this->id);
+    $stmt->execute();	  
+  }
 }
 ?>

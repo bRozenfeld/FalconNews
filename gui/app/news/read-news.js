@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   console.log("read-news.js loaded");
   getNews();
-  setInterval(update, 180000); // refresh each 3 minutes
+  setInterval(update, 1800000); // refresh each 3 minutes
 });
 
 // listener on keystroke

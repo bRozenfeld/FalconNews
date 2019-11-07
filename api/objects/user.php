@@ -26,7 +26,7 @@ class User {
 
   // function to check if email exist
   public function checkEmail() {
-    $query = "SELECT id FROM " . $table_name . " WHERE email = :email";
+    $query = "SELECT id FROM " . $this->table_name . " WHERE email = :email";
     $stmt = $this->connexion->prepare($query);
     $stmt->bindParam(":email", $this->email);
     $stmt->execute();
@@ -38,8 +38,17 @@ class User {
   }
 
   // function to check if password is valid
-  public function checkPaswword() {
-
+  public function checkPassword() {
+    $query = "SELECT password FROM " . $this->table_name . " WHERE email = :email";
+    $stmt = $this->connexion->prepare($query);
+    $stmt->bindParam(":email", $this->email);
+    $stmt->execute();
+    $hash = $stmt->fetch(PDO::FETCH_ASSOC);
+    $hash = $hash["password"];
+    if(password_verify($this->password, $hash)) {
+      return true;
+    }
+    return false;
   }
 
   // generate a random password

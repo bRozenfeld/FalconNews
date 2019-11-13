@@ -1,0 +1,29 @@
+Body{
+	 background: linear-gradient(to bottom,white,DeepSkyBlue) no-repeat center center fixed;
+}
+.container{
+	margin:-8px;
+	padding-right: 25px;
+    padding-left: 25px;
+}
+
+table{
+	margin-top:-5%;
+}
+h4{
+	color: navy;
+	font-size:2.9em;
+	font-weight: bold;
+	font-family:Algerian;
+}
+
+p{
+	font-size:1.7em;
+	font-weight: bold;
+	font-family:cursive;
+}
+
+
+
+
+

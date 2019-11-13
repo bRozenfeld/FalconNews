@@ -1,19 +1,67 @@
 
 <html>
   <head>
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <title>FalconNews</title>
-	<link href="../assets/css/style.css" rel="stylesheet" />
+	<link href="../assets/css/styleNews.css" rel="stylesheet" />
 	<link rel="shortcut icon" type="image/x-icon" href="..\assets\images\falconicone.png">
     <script src="read-news.js"></script>
+	
   </head>
   <body>
-      <h1 id="title"></h1>
-      <p id="description"></p>
-      <h3 id="pubDate"></h3>
-      <a id="url"></a>
-      <p id="id" style="visibility: hidden"></p>
-      <p id="priority" style="visibility: hidden"></p>
+  
+  <!-- NAVBAR-->
+<nav id="menu" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="..\assets\images\falcon.png" width="150" alt="" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold" ">Falcon News</span>
+    </a>
+
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto font-weight-bold">
+        <li class="nav-item active"><a href="#" class="nav-link">Home </a></li>
+        <li class="nav-item"><a href="../auth/auth.html" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="../feeders/feeders.html" class="nav-link">Feeders</a></li>
+        <li class="nav-item"><a href="../user/user.html" class="nav-link">User</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+	
+	
+  <div class="container">
+        <div id="news" >
+		<table class="table table-responsive table-border text-center text-justify ">
+			<thead class="colspan=2">
+				<tr>
+					  <th><h4 id="title"></h4><th>
+				</tr>
+			</thead>
+			<tbody >
+				<tr>
+					 <td class="col sm-6"><p id="description"></p></td>
+					 <td class="col sm-3">image</td>
+					 
+					 
+				</tr>	  
+				<tr>
+					  <td>Publié le :  <h5 id="pubDate"></h5></td>
+				</tr>
+				<tr>
+					  <td><a  id="url"></a></td>
+					  <p id="id" style="visibility: hidden"></p>
+					  <p id="priority" style="visibility: hidden"></p>
+				</tr>	  
+	    	</tbody>
+		</table>	
+        </div>
+  </div>
   </body>
 </html>

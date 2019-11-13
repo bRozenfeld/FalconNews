@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function getFeeders() {
-  console.log("Entering getFeeders() method");
+  console.log("Entering getFders() method");
 
   var urlDest = "http://localhost/FalconNews/api/feeders/read.php";
   var method = "GET";
@@ -17,8 +17,10 @@ function getFeeders() {
       var jsonVar = JSON.parse(request.responseText);
       console.log("getFeeders() Success: " + jsonVar);
       updateFeeders(jsonVar);
-    } else {
-      console.log(request.responseText);
+    } else if(request.status === 201 ){
+		var jsonVar = JSON.parse(request.responseText);
+      console.log("201");
+	  updateFeeders(jsonVar);
     }
   }
   request.send();

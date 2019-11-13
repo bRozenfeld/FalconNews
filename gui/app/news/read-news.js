@@ -1,18 +1,33 @@
+
 // listener on document load
 document.addEventListener("DOMContentLoaded", function() {
   //console.log("read-news.js loaded");
   updateFeeders();
   getNews();
-
-  setInterval(update, 15000); // refresh the news each 3 minutes
+  fullScreenDimensions();	
+  setInterval(update, 180000); // refresh the news each 3 minutes
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 
 });
 
 // listener on keystroke
+
 document.addEventListener("keyup", function(event) {
   //console.log("keyup event triggered");
   openFullScreen();
+  	
+});
+
+document.addEventListener("fullscreenchange", function(event){
+	console.log(document.fullscreen);
+	if(document.fullscreen) {
+		invisibleMenu();
+		
+	} else {
+		visibleMenu();
+		
+		//normalDimensions();
+	}		
 });
 
 window.addEventListener("unload", function() {
@@ -37,6 +52,9 @@ function getNews() {
       var jsonVar = JSON.parse(request.responseText);
       //console.log("getNews() success: " + jsonVar);
       displayNews(jsonVar);
+    }else if(request.status === 404){
+		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+
     } else {
       var jsonVar = JSON.parse(request.responseText);
       //console.log("getNews() failed: " + request.responseText)
@@ -63,7 +81,10 @@ function updateNews() {
         //console.log(request.responseText);
         var jsonVar = JSON.parse(request.responseText);
         console.log("updateNews() success: " + jsonVar);
-      } else {
+      }else if(request.status === 404){
+		window.location.href="http://localhost/falconnews/gui/app/error/page404.html";
+
+	  }else {
         //console.log(request.responseText);
         var jsonVar = JSON.parse(request.responseText);
         console.log("updateNews() failed: " + request.responseText);
@@ -92,7 +113,10 @@ function deleteNews(id) {
       console.log(request.responseText);
       var jsonVar = JSON.parse(request.responseText);
       //console.log("deleteNews() success: " + jsonVar);
-    } else {
+    }else if(request.status === 404){
+		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+
+  } else {
       var jsonVar = JSON.parse(request.responseText);
       //console.log("updateNews() failed: " + request.responseText)
     }
@@ -124,7 +148,8 @@ function displayNews(data) {
 
   var url = document.getElementById("url");
   url.innerHTML = data[0].url;
-
+  url.href = data[0].url;
+  
   var id = document.getElementById("id");
   id.innerHTML = data[0].id;
 
@@ -135,18 +160,31 @@ function displayNews(data) {
 
 // function to open the document in full screen mode
 function openFullScreen() {
+	console.log("fullscreen");
   var elem = document.documentElement;
+  
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
-  } else if (elem.mozRequestFullScreen) { /* Firefox */
+  } 
+  else if (elem.mozRequestFullScreen) { // Firefox
     elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera 
     elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+  } else if (elem.msRequestFullscreen) { // IE/Edge 
     elem.msRequestFullscreen();
   }
+  //menu.style.display="none";
 };
+function invisibleMenu(){
+	var menu = document.getElementById("menu");
+	menu.style.display="none";
+}
 
+function visibleMenu() {
+	var menu = document.getElementById("menu");
+	menu.style.display="block";
+ 
+}
 
 
 function updateFeeder(data) {
@@ -160,7 +198,10 @@ function updateFeeder(data) {
       //console.log(request.responseText);
       var jsonVar = JSON.parse(request.responseText);
       //console.log("updateFeeder() Success: " + jsonVar);
-    } else {
+    }else if(request.status === 404){
+		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+
+  } else {
       //console.log(request.responseText);
     }
   }
@@ -186,9 +227,29 @@ function updateFeeders() {
       for(var i = 0; i < data.length; i++) {
         updateFeeder(data[i]);
       }
-    } else {
+    }else if(request.status === 404){
+		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+
+  }else {
       //console.log(request.responseText);
     }
   }
   request.send();
 };
+
+//update dimensions
+function fullScreenDimensions(){
+	
+	var width = window.screen.width;
+	
+	var height= window.screen.height;
+	
+	document.getElementById("news").style.width=width;
+	document.getElementById("news").style.margins="-20px";
+	document.getElementById("news").style.height=height;
+}
+
+function normalDimensions(){
+	document.getElementById("news").style.width="";
+	document.getElementById("news").style.height="";
+}

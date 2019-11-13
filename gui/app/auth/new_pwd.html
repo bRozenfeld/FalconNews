@@ -12,7 +12,8 @@
 	  <title>Falcon-News Reset Password</title>
 	</head>
 	
-	<body>
+	<body >
+		
 		<div id="login">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
@@ -26,12 +27,12 @@
 							
 							<div class="form-group">
 								<h2 class="text-center text-info">Change Password</h2>
-								<div class="input-group mb-3">
+								<div id="pwd1" class="input-group mb-3">
 								  <div class="input-group-prepend"><span class="input-group-text"><img src="..\assets\images\key.png" alt="pwd"/></span></div>
 								  <input  id="password1" name="pwd" placeholder="new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control"  type="password" onkeyup="Check()"required>
 								 </div>
 								 
-								 <div><input type="checkbox" onclick="myFunction()">  Show Password </div>
+								 <div><input  type="checkbox"  onclick="myFunction()">  Show Password </div>
 								 <div class="row">
 										<div class="col-sm-6">
 										<span id="length" class="invalid" ></span> 8 Characters Long<br>
@@ -42,8 +43,9 @@
 										<span id="number" class="invalid" ></span> One Number
 										</div>
 								</div>
+								
 								 
-								<div class="input-group-prepend mb-3">								 
+								<div id="pwd2" class="input-group-prepend mb-3">								 
 								  <div class="input-group-prepend"><span class="input-group-text"><img src="..\assets\images\key.png" alt="pwd"/></span></div>
 								  <input  id="password2" name="pwd" placeholder="Confirm new password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" class="form-control"  type="password" onkeyup="checkPasswordMatch()" required>
 								</div>
@@ -63,6 +65,7 @@
             </div>
         </div>
     </div>
-		
+	</div>
+
   </body>
 </html>

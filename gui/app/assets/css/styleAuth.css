@@ -8,10 +8,14 @@ Body{
 	background-image: linear-gradient(to bottom,white, white);
 	margin : 50px;
 	padding : 15px;
+	width : 83%;
 }
 #submit{
   display: block;
   margin : auto;
+}
+#pwd1,#pwd2{
+	padding-top:25px;
 }
 
 .valid:before {
@@ -22,4 +26,20 @@ Body{
 .invalid:before {
   position: relative;
   content: "❌";
+}
+canvas
+{
+    display: block;
+
+    vertical-align: bottom;
+}
+
+#aa_particles
+{
+    z-index: 4;
+
+    height: 100%;
+    height: 100vh;
+
+     background: linear-gradient(to bottom,white, DeepSkyBlue) no-repeat center center fixed;
 }

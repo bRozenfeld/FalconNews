@@ -15,6 +15,14 @@ document.addEventListener("keyup", function(event) {
   openFullScreen();
 });
 
+window.addEventListener("unload", function() {
+  var id = document.getElementById("id");
+  navigator.sendBeacon("http://localhost/FalconNews/api/news/update_display.php", JSON.stringify({
+    id : id.innerHTML
+  }));
+});
+
+
 // Get the news to display
 function getNews() {
   //console.log("Entering getNews() method");

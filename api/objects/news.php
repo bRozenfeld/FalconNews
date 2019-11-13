@@ -75,7 +75,7 @@ class News {
   }
 
   public function delete(){
-    $query = "DELETE FROM " . $this->table_name . " WHERE id = :d";
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
     $stmt = $this->connection->prepare($query);
     $stmt->bindParam(":id", $this->id);
     if($stmt->execute()) {
@@ -83,12 +83,12 @@ class News {
     }
     return false;
   }
-	
+
   public function update_display() {
     $query = "UPDATE " . $this->table_name . " SET is_displayed = false WHERE id = :id";
     $stmt = $this->connection->prepare($query);
     $stmt->bindParam(":id", $this->id);
-    $stmt->execute();	  
+    $stmt->execute();
   }
 }
 ?>

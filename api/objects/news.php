@@ -44,7 +44,7 @@ class News {
 
   // function to read data
   public function read(){
-    $query = "SELECT id, title, published_date, description, url, priority
+    $query = "SELECT id, title, published_date, description, url, priority, url_img
               FROM " . $this->table_name . "
               WHERE is_displayed IS NOT TRUE
               ORDER BY priority DESC, published_date DESC

@@ -35,7 +35,7 @@ class Feeder {
           $stmt->bindParam(":title", $n["title"]);
           $stmt->bindParam(":description", $n["description"]);
           $stmt->bindParam(":url", $n["url"]);
-		  $stmt->bindParam(":url_img", $n["url_img"]);
+		      $stmt->bindParam(":url_img", $n["url_img"]);
           $stmt->bindParam(":published_date", $n["published_date"]);
           $stmt->bindParam(":feeder_id", $last_id);
           if(!$stmt->execute()) {
@@ -113,20 +113,20 @@ class Feeder {
   // Check if the url of the feed is valid
   public function checkURL($url) {
     if(@simplexml_load_file($url)){
-		
-		//check if all tags needed can be found in the feed
-		$testDom = new DOMDocument();
-		$testDom->load ($url);
-		
-		$title = $testDom->getElementsByTagName('title');
-		$link = $testDom->getElementsByTagName('link');
-		$description = $testDom->getElementsByTagName('description');
-		$pubDate = $testDom->getElementsByTagName('pubDate');
-		
-		if(($title->length!=0) && ($link->length!=0) && ($description->length!=0) && ($pubDate->length!=0)){
-			return true;
-		}
-	   
+  		//check if all tags needed can be found in the feed
+  		$testDom = new DOMDocument();
+  		$testDom->load($url);
+
+  		$title = $testDom->getElementsByTagName('title');
+  		$link = $testDom->getElementsByTagName('link');
+  		$description = $testDom->getElementsByTagName('description');
+  		$pubDate = $testDom->getElementsByTagName('pubDate');
+
+  		if(($title->length!=0) && ($link->length!=0) && ($description->length!=0) && ($pubDate->length!=0)){
+        $this->url = $url;
+        return true;
+  		}
+
    } else {
      return false;
    }
@@ -144,7 +144,6 @@ class Feeder {
 	   if ($nRows>=15){
 		     return false;
 	   }
-
 	   return true;
    }
 
@@ -152,27 +151,60 @@ class Feeder {
    private function parseFeedToNews() {
      $news = array();
      $feed = simplexml_load_file($this->url);
-	 $dom = new DOMDocument();
-	 $dom->load ($this->url);
+
+     $urlImg = null;
 
      foreach($feed->channel->item as $item) {
-		 //get the image url from the item
-		 $image = $dom->getElementsByTagNameNS("media","content");
-		 $urlImg = $image->item(0)->getAttribute('url');
-		 //put each needed tag of item in an array
+       $urlImg = $this->getImageURL($item->link);
+
        $n = array (
          "title" => $item->title,
          "url" => $item->link,
          "description" => $item->description,
          "published_date" => date('Y-m-d H:i:s', strtotime(str_replace('-', '/', $item->pubDate))),
-		 "url_img" => $urlImg
+		     "url_img" => $urlImg
        );
        array_push($news, $n);
      }
 
-     //echo print_r($news);
-
      return $news;
+   }
+
+
+   // return the url of the image associate to a news
+   // if not, return null
+   private function getImageURL($link) {
+     $dom = new DOMDocument();
+     $dom->preserveWhiteSpace = false;
+     $dom->load($this->url);
+
+     $find = false;
+
+     $items = $dom->getElementsByTagName('item');
+     foreach ($items as $item) {
+       foreach($item->childNodes as $child) {
+         if($child->nodeValue == $link) {
+           $find = true;
+           break;
+         }
+       }
+
+       if($find === true) {
+         foreach($item->childNodes as $tag)
+         {
+           if($url = $tag->getAttribute("url"))
+           {
+             // check if there's image
+             if(strpos($url,'jpg') || strpose($url, 'png') || strpos($url, 'jpeg'))
+             {
+               return $url;
+             }
+           }
+         }
+       }
+     }
+     return null;
+
    }
 }
 ?>

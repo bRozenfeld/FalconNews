@@ -30,6 +30,7 @@ if(!empty($data->email) && !(empty($data->password))) {
   // check that the email is valid
   if($user->checkEmail()) {
     if($user->checkPassword()) {
+      
       http_response_code(200);
       echo json_encode(array("message" => "Login successful."));
     } else {

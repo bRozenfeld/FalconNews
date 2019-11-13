@@ -44,7 +44,7 @@ class News {
 
   // function to read data
   public function read(){
-    $query = "SELECT id, title, published_date, description, url, priority
+    $query = "SELECT id, title, published_date, description, url, priority, url_img
               FROM " . $this->table_name . "
               WHERE is_displayed IS NOT TRUE
               ORDER BY priority DESC, published_date DESC
@@ -75,7 +75,7 @@ class News {
   }
 
   public function delete(){
-    $query = "DELETE FROM " . $this->table_name . " WHERE id = :d";
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
     $stmt = $this->connection->prepare($query);
     $stmt->bindParam(":id", $this->id);
     if($stmt->execute()) {
@@ -83,12 +83,12 @@ class News {
     }
     return false;
   }
-	
+
   public function update_display() {
     $query = "UPDATE " . $this->table_name . " SET is_displayed = false WHERE id = :id";
     $stmt = $this->connection->prepare($query);
     $stmt->bindParam(":id", $this->id);
-    $stmt->execute();	  
+    $stmt->execute();
   }
 }
 ?>

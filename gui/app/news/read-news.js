@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function() {
   //console.log("read-news.js loaded");
   updateFeeders();
   getNews();
-  fullScreenDimensions();	
+  fullScreenDimensions();
   setInterval(update, 180000); // refresh the news each 3 minutes
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 
@@ -15,20 +15,28 @@ document.addEventListener("DOMContentLoaded", function() {
 document.addEventListener("keyup", function(event) {
   //console.log("keyup event triggered");
   openFullScreen();
-  	
+
 });
 
 document.addEventListener("fullscreenchange", function(event){
 	console.log(document.fullscreen);
 	if(document.fullscreen) {
 		invisibleMenu();
-		
+
 	} else {
 		visibleMenu();
-		
+
 		//normalDimensions();
-	}		
+	}
 });
+
+window.addEventListener("unload", function() {
+  var id = document.getElementById("id");
+  navigator.sendBeacon("http://localhost/FalconNews/api/news/update_display.php", JSON.stringify({
+    id : id.innerHTML
+  }));
+});
+
 
 // Get the news to display
 function getNews() {
@@ -141,12 +149,15 @@ function displayNews(data) {
   var url = document.getElementById("url");
   url.innerHTML = data[0].url;
   url.href = data[0].url;
-  
+
   var id = document.getElementById("id");
   id.innerHTML = data[0].id;
 
   var priority = document.getElementById("priority");
   priority.innerHTML = data[0].priority;
+
+  var img = document.getElementById("img");
+  img.innerHTML = data[0].url;
 
 };
 
@@ -154,15 +165,15 @@ function displayNews(data) {
 function openFullScreen() {
 	console.log("fullscreen");
   var elem = document.documentElement;
-  
+
   if (elem.requestFullscreen) {
     elem.requestFullscreen();
-  } 
+  }
   else if (elem.mozRequestFullScreen) { // Firefox
     elem.mozRequestFullScreen();
-  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera 
+  } else if (elem.webkitRequestFullscreen) { // Chrome, Safari and Opera
     elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { // IE/Edge 
+  } else if (elem.msRequestFullscreen) { // IE/Edge
     elem.msRequestFullscreen();
   }
   //menu.style.display="none";
@@ -175,7 +186,7 @@ function invisibleMenu(){
 function visibleMenu() {
 	var menu = document.getElementById("menu");
 	menu.style.display="block";
- 
+
 }
 
 
@@ -231,11 +242,11 @@ function updateFeeders() {
 
 //update dimensions
 function fullScreenDimensions(){
-	
+
 	var width = window.screen.width;
-	
+
 	var height= window.screen.height;
-	
+
 	document.getElementById("news").style.width=width;
 	document.getElementById("news").style.margins="-20px";
 	document.getElementById("news").style.height=height;

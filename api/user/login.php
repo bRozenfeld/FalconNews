@@ -14,6 +14,7 @@ use \Firebase\JWT\JWT;
 
 include_once "../config/database.php";
 include_once "../objects/user.php";
+include_once "../config/core.php";
 
 // connect to db
 $database = new Database();
@@ -30,9 +31,20 @@ if(!empty($data->email) && !(empty($data->password))) {
   // check that the email is valid
   if($user->checkEmail()) {
     if($user->checkPassword()) {
-      
+      $token = array(
+        "iss" => $iss,
+        "aud" => $aud,
+        "iat" => $iat,
+        "nbf" => $nbf,
+        "data" => array(
+          "email" => $user->email
+        )
+      );
+
       http_response_code(200);
-      echo json_encode(array("message" => "Login successful."));
+
+      $jwt = JWT::encode($token, $key);
+      echo json_encode(array("message" => "Login successful.", "jwt" => $jwt));
     } else {
       http_response_code(400);
       echo json_encode(array("message" => "Invalid credentials."));

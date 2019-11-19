@@ -17,9 +17,26 @@ class User {
   public function create() {
     $query = "INSERT INTO " . $this->table_name . " SET email=:email, password=:password";
     $stmt = $this->connexion->prepare($query);
-    $stmt->bindParam(":email", $this->email);
-    $stmt->bindParam("password", $this->password);
+
+    $this->password=htmlspecialchars(strip_tags($this->password));
+    $this->email=htmlspecialchars(strip_tags($this->email));
+
     $stmt->execute();
+    return $stmt;
+  }
+
+  /**
+   * Reset a password
+   */
+  public function reset_password() {
+    $query = "UPDATE " . $this->table_name . " SET password=:password WHERE email=:email";
+    $stmt = $this->connexion->prepare($query);
+
+    $stmt->bindParam(":email", $this->email);
+    $stmt->bindParam(":password", $this->password);
+
+    $stmt->execute();
+
     return $stmt;
   }
 

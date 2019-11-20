@@ -12,15 +12,16 @@ table{
 }
 h4{
 	color: navy;
-	font-size:2.9em;
+	font-size:3em;
 	font-weight: bold;
 	font-family:Algerian;
 }
 
 p{
-	font-size:1.7em;
+	font-size:1.6em;
 	font-weight: bold;
 	font-family:cursive;
+	margin-right:2.5%;
 }
 
 

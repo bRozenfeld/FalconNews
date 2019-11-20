@@ -52,7 +52,7 @@ function updateFeeders(data) {
       tabCell.innerHTML = data[i][col[j]];
 
       var tabDeleteCell = tr.insertCell(-1);
-      var strHtml = "<a id=" + data[i][col[j-1]] + " onclick='javascript:location.reload(false),deleteFeeder(this.id)' class='button'><span class='icon'><i class='fas fa-trash'></i></span></a>";
+      var strHtml = "<button id=" + data[i][col[j-1]] + " onclick='javascript:location.reload(false),deleteFeeder(this.id)'  class='btn btn-danger'><span class='icon'><i class='fas fa-trash'></i></span></button>";
       tabDeleteCell.innerHTML = strHtml;
     }
   }

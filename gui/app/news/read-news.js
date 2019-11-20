@@ -157,8 +157,8 @@ function displayNews(data) {
   priority.innerHTML = data[0].priority;
 
   var img = document.getElementById("img");
-  img.innerHTML = data[0].url;
-
+  img.src = data[0].url;
+	img.innerHTML = data[0].img
 };
 
 // function to open the document in full screen mode

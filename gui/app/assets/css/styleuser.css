@@ -2,17 +2,15 @@ Body{
 	 background: linear-gradient(to bottom,white, DeepSkyBlue) no-repeat center center fixed;
 	
 }
-#rss{
+#userpng{
 	margin-top: 5%;
-	margin-left:43%
+	width:100%;
 }
-#feed {
-	
+#user {	
 	margin-top: 5%;
-	
 }
-#add{
-	font-size: 23px;
+#submit{
+	margin-left:42%
 }
 /* Table */
 
@@ -45,4 +43,3 @@ th, td {
   width: auto;
   text-align: center;
 }
-

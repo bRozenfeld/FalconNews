@@ -25,7 +25,7 @@ $user = new User($connexion);
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data isn't empty
-if(!empty($data->email) && !(empty($data->password))) {
+if(!empty($data->email) && !empty($data->password)) {
   $user->email = $data->email;
   $user->password = $data->password;
   // check that the email is valid

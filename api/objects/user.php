@@ -24,6 +24,26 @@ class User {
     $stmt->execute();
     return $stmt;
   }
+  
+  //read function
+  public function read() {
+    $query = "SELECT f.id, f.email, f.password, f.is_admin FROM " . $this->table_name . " f";
+    $stmt = $this->connexion->prepare($query);
+    $stmt->execute();
+    return $stmt;
+  }
+  //delete function
+  public function delete() {
+    $query = "DELETE FROM " . $this->table_name . " WHERE id = :id";
+    $stmt = $this->connexion->prepare($query);
+
+    $stmt->bindParam(":id", $this->id);
+
+    if($stmt->execute()) {
+      return true;
+    }
+    return false;
+  }
 
   /**
    * Reset a password
@@ -39,6 +59,7 @@ class User {
 
     return $stmt;
   }
+
 
 
   // function to check if email exist

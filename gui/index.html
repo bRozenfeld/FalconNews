@@ -1,33 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="app\assets\images\falconicone.png">
-  <title>FalconNews</title>
-  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-  <!-- custom css -->
-  <link href="app/assets/css/style.css" rel="stylesheet" />
-  <meta http-equiv="refresh" content="10" />
-</head>
-<body>
-<ul>
-  <li><a href="app/news/news.html">News</a></li>
-  <li><a href="app/feeders/feeders.html">Feeders</a></li>
-  <li><a href="app/auth/auth.html">Auth</a></li>
-  <li><a href="app/error/page404.html">404</a></li>
-  <li><a href="app/auth/new_pwd.html">change password</a></li>
-  <li><a href="app/user/user.html">add user</a></li>
+<html>
+  <head>
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <title>FalconNews</title>
+	<link href="../assets/css/styleNews.css" rel="stylesheet" />
+	<link rel="shortcut icon" type="image/x-icon" href="..\assets\images\falconicone.png">
+    <script src="app/news/read-news.js"></script>
 
-</ul>
+  </head>
+  <body>
 
-<!-- app will be injected here -->
-<div id="root"></div>
+  <!-- NAVBAR-->
+<nav id="menu" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="..\assets\images\falcon.png" width="150" alt="" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">Falcon News</span>
+    </a>
 
-<!-- app js script -->
-<script src="app/app.js"></script>
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto font-weight-bold ">
+        <li class="nav-item active"><a href="#" class="nav-link">Home </a></li>
+        <li class="nav-item"><a href="../auth/auth.html" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="../feeders/feeders.html" class="nav-link">Feeders</a></li>
+        <li class="nav-item"><a href="../user/user.html" class="nav-link">User</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
 
-</body>
+  <div class="container">
+        <div id="news" >
+		<table class="table table-responsive table-borderless text-center text-justify ">
+			<thead>
+				<tr>
+					  <th colspan="2"><h4 id="title"></h4></th>
+				</tr>
+			</thead>
+			<tbody >
+				<tr>
+					<td><img id="img" src="" class="img-responsive rounded" border="3" style=width:100%></td>
+					 <td colspan="2"><p class="text-justify" id="description"></p></td>
+				</tr>
+
+				<tr>
+					  <td><a  id="url"></a></td>
+					  <td><span style=font-size:1.2em>Publié le :</span> <span style=font-size:1.2em id="pubDate"></span></h5></td>
+					  <p id="id" style="visibility: hidden"></p>
+					  <p id="priority" style="visibility: hidden"></p>
+				</tr>
+	    	</tbody>
+		</table>
+        </div>
+  </div>
+  </body>
 </html>

@@ -1,8 +1,3 @@
-document.addEventListener("DOMContentLoaded", function() {
-  console.log("read-feeder.js load");
-  getFeeders();
-
-});
 
 function getFeeders() {
   console.log("Entering getFders() method");

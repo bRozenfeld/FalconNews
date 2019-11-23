@@ -5,13 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FalconNews Feeders</title>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" /> 
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 
    <link rel="shortcut icon" type="image/x-icon" href="..\assets\images\falconicone.png">
   <!-- custom css -->
   <link href="../assets/css/style.css" rel="stylesheet" />
   <!--Script-->
+  <script src="feeders.js"></script>
+  <script src="../user/user.js"></script>
   <script src="delete-feeder.js"></script>
   <script src="create-feeder.js"></script>
   <script src="read-feeder.js"></script>
@@ -28,14 +30,14 @@
 		<button id="add" class="btn btn-success" type="button" onclick="javascript:location.reload(false),addFeeder()">Ajouter</button>
 	  </div>
   </div>
-     
+
   <table class="table table-bordered ">
 	<thead>
 		<tr >
 			<th colspan="2"> Liste des flux RSS </th>
 		</tr>
 	</thead>
-	
+
 	<tbody>
 		<tr class="table-Primary">
 			<td  id="feedUrls"></td>

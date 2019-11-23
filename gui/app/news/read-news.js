@@ -38,9 +38,14 @@ window.addEventListener("unload", function() {
 });
 
 
-// Get the news to display
+/**
+ * Method making ajax call to get the news with GET method
+ *
+ * Response code : 200 if there's news in the database
+ * Response code : 404 if no news found
+ */
 function getNews() {
-  //console.log("Entering getNews() method");
+  console.log("Entering getNews() method");
 
   var urlDest = "http://localhost/FalconNews/api/news/read.php";
   var method = "GET";
@@ -52,8 +57,8 @@ function getNews() {
       var jsonVar = JSON.parse(request.responseText);
       //console.log("getNews() success: " + jsonVar);
       displayNews(jsonVar);
-    }else if(request.status === 404){
-		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+    }else if(request.status === 404 && request.readyState === request.DONE){
+		//window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
 
     } else {
       var jsonVar = JSON.parse(request.responseText);

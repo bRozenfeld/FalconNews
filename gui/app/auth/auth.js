@@ -1,7 +1,11 @@
 /**
- * Authenticate the user, send the following data
+ * Authenticate the user, send the following data with POST method
  * "email" : String
  * "password" : Password
+ *
+ * Response code : 200 if successful authenticate
+ * Response code : 401 if invalid credentials
+ * Response code : 400 if request invalid
  */
 function login() {
   console.log("entering login() function");
@@ -22,6 +26,8 @@ function login() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var info = JSON.parse(request.responseText);
       console.log("login success : " + info);
+      document.cookie = "token=" + info.jwt + ";secure";
+      window.location.href = "http://localhost/FalconNews/gui/app/auth/home.html";
     }
     // invalid credentials
     else if (request.status === 401 && request.readyState === request.DONE) {

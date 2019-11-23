@@ -46,11 +46,11 @@ if(!empty($data->email) && !empty($data->password)) {
       $jwt = JWT::encode($token, $key);
       echo json_encode(array("message" => "Login successful.", "jwt" => $jwt));
     } else {
-      http_response_code(400);
-      echo json_encode(array("message" => "Invalid credentials."));
+      http_response_code(401);
+      echo json_encode(array("message" => "Login failed : invalid credentials."));
     }
   } else {
-    http_response_code(400);
+    http_response_code(401);
     echo json_encode(array("message" => "Invalid credentials."));
   }
 } else {

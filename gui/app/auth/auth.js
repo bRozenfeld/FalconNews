@@ -7,7 +7,10 @@ function login() {
   console.log("entering login() function");
 
   var email = document.getElementById("email");
-  var password = document.getElementById("pwd");
+  var password = document.getElementById("test");
+
+  console.log(email.value);
+  console.log(password.value);
 
   var urlDest = "http://localhost/FalconNews/api/user/login.php";
   var method = "POST";
@@ -15,11 +18,25 @@ function login() {
   request.open(method, urlDest);
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function() {
+    // success
     if (request.status === 200 && request.readyState === request.DONE) {
       var info = JSON.parse(request.responseText);
       console.log("login success : " + info);
-    } else {
-      console.log("login failed");
+    }
+    // invalid credentials
+    else if (request.status === 401 && request.readyState === request.DONE) {
+      var info = JSON.parse(request.responseText);
+      console.log(info);
+    }
+    // malformed request
+    else if (request.status === 400 && request.readyState === request.DONE) {
+      var info = JSON.parse(request.responseText);
+      console.log(info);
+    }
+    // anything else
+    else {
+      var info = JSON.parse(request.responseText);
+      console.log(info);
     }
   };
   request.send(JSON.stringify({

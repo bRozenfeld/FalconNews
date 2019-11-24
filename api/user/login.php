@@ -31,16 +31,17 @@ if(!empty($data->email) && !empty($data->password)) {
   // check that the email is valid
   if($user->checkEmail()) {
     if($user->checkPassword()) {
-      $token = array(
-        "iss" => $iss,
-        "aud" => $aud,
-        "iat" => $iat,
-        "nbf" => $nbf,
-        "data" => array(
-          "email" => $user->email
-        )
-      );
-
+        $token = array(
+         "iss" => $iss,
+         "aud" => $aud,
+         "iat" => $iat,
+         "nbf" => $nbf,
+         "exp" => $exp,
+         "data" => array(
+           "email" => $user->email,
+           "is_admin" => $user->isAdmin()
+         )
+       );
       http_response_code(200);
 
       $jwt = JWT::encode($token, $key);

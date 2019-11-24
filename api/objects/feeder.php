@@ -195,7 +195,7 @@ class Feeder {
            if($url = $tag->getAttribute("url"))
            {
              // check if there's image
-             if(strpos($url,'jpg') || strpose($url, 'png') || strpos($url, 'jpeg'))
+             if(strpos($url,'jpg') || strpos($url, 'png') || strpos($url, 'jpeg'))
              {
                return $url;
              }

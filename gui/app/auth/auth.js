@@ -1,3 +1,6 @@
+var isAuthenticated = false;
+var isAdmin = false;
+
 /**
  * Authenticate the user, send the following data with POST method
  * "email" : String
@@ -24,10 +27,11 @@ function login() {
   request.onload = function() {
     // success
     if (request.status === 200 && request.readyState === request.DONE) {
+      //!!! ADD SECURE TO THE COOKIE TO ENSURE YOU USE IT ONLY WITH HTTPS !!!
       var info = JSON.parse(request.responseText);
       console.log("login success : " + info);
-      document.cookie = "token=" + info.jwt + ";secure";
-      window.location.href = "http://localhost/FalconNews/gui/app/auth/home.html";
+      document.cookie = "token=" + info.jwt + ";path=/";
+      window.location.href = "http://localhost/FalconNews/gui/app/news/news.html";
     }
     // invalid credentials
     else if (request.status === 401 && request.readyState === request.DONE) {
@@ -76,3 +80,62 @@ function reset_password() {
     email: email.value
   }));
 };
+
+/**
+ * Return the token conained in the cookies
+ */
+function getToken() {
+  var cookies = document.cookie;
+  var cookie = cookies.split("=");
+  if(cookie[0] === "token") {
+    var token = cookie[1];
+    return token;
+  } else {
+    return null;
+  }
+};
+
+/**
+ * Verify that the given token is valid with POST method
+ * set the attributes isAuthenticated and isAdmin depending
+ * on the data presents in the token
+ *
+ * Response code : 200 if token is valid
+ * Response code : 401 if token not valid
+ */
+function validateToken(token) {
+   var urlDest = "http://localhost/FalconNews/api/user/validate_token.php";
+   var method = "POST";
+   var request = new XMLHttpRequest();
+   request.open(method, urlDest);
+   request.setRequestHeader("Content-Type", "application/json");
+   request.onload = function() {
+     // token valid
+     if(request.status === 200 && request.readyState === request.DONE) {
+       isAuthenticated = true;
+       var response = JSON.parse(request.responseText);
+       var data = response.data;
+       if(data.is_admin === true) {
+         isAdmin = true;
+       } else {
+         isAdmin = false;
+       }
+       //document.location.reload();
+     }
+     // invalid token
+     else if (request.status === 401 && request.readyState === request.DONE) {
+       var info = JSON.parse(request.responseText);
+       console.log(info);
+       isAuthenticated = false;
+     }
+     // anything else
+     else {
+       var info = JSON.parse(request.responseText);
+       console.log(info);
+       isAuthenticated = false;
+     }
+   };
+   request.send(JSON.stringify({
+     jwt: token
+   }));
+}

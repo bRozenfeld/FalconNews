@@ -1,7 +1,12 @@
-
-function getFeeders() {
-  console.log("Entering getFders() method");
-
+/**
+ * Get all the feeders with GET method
+ *
+ * Response Code :
+ *  200 if successful request
+ *  404 if no feeders found
+ */
+function readFeeders() {
+  console.log("ok");
   var urlDest = "http://localhost/FalconNews/api/feeders/read.php";
   var method = "GET";
   var request = new XMLHttpRequest();
@@ -10,22 +15,23 @@ function getFeeders() {
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var jsonVar = JSON.parse(request.responseText);
-      console.log("getFeeders() Success: " + jsonVar);
-      updateFeeders(jsonVar);
-    } else if(request.status === 201 ){
-		var jsonVar = JSON.parse(request.responseText);
-      console.log("201");
-	  updateFeeders(jsonVar);
+      displayFeeders(jsonVar);
+      console.log(jsonVar);
+    } else if(request.status === 404 && request.readyState === request.DONE ){
+  		var jsonVar = JSON.parse(request.responseText);
+  	  displayFeeders(jsonVar);
+      console.log(jsonVar);
+    } else {
+
     }
   }
   request.send();
 };
 
-// Update the list of rss feeds
-function updateFeeders(data) {
-  console.log("Enter updateFeeders(jsonVar) method -> jsonVar: ");
-  console.log(data);
-
+/**
+ * Display the feeders
+ */
+function displayFeeders(data) {
   // Extract value for headers
   var col = [];
   for (var i=0; i < data.length; i++) {
@@ -56,6 +62,5 @@ function updateFeeders(data) {
   var divContainer = document.getElementById("feedUrls");
   divContainer.innerHTML = "";
   divContainer.appendChild(table);
-
 
 };

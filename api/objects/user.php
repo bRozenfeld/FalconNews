@@ -24,7 +24,7 @@ class User {
     $stmt->execute();
     return $stmt;
   }
-  
+
   //read function
   public function read() {
     $query = "SELECT f.id, f.email, f.password, f.is_admin FROM " . $this->table_name . " f";
@@ -111,6 +111,17 @@ class User {
     $n = rand(0, strlen($alphabet_three)-1);
     $pass[] = $alphabet_three[$n];
     return implode($pass);
+  }
+
+  // check if the user is admin
+  public function isAdmin() {
+    $query = "SELECT is_admin FROM " . $this->table_name . " WHERE email = :email";
+    $stmt = $this->connexion->prepare($query);
+    $stmt->bindParam(":email", $this->email);
+    $stmt->execute();
+    $is_admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    $is_admin = $is_admin["is_admin"];
+    return $is_admin;
   }
 
 }

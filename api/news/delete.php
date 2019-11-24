@@ -27,7 +27,7 @@ if($news->delete())
 
 } else {
   //code response 404 - page not found
-  http_response_code(404);
+  http_response_code(400);
 
   echo json_encode(array("message" => "Unable to delete this news."));
 }

@@ -38,7 +38,7 @@ if(!empty($data->url)) {
 		  } else {
 			// set response code - 503 service unavailable
 			http_response_code(503);
-			echo json_encode(array("message" => "Unable to add this feed"));
+			echo json_encode(array("message" => "Unable to add this feed."));
 		  }
 
 	  } else {
@@ -47,7 +47,7 @@ if(!empty($data->url)) {
 
 	  }
 	} else {
-		http_response_code(400);
+		http_response_code(500);
 		echo json_encode(array("message" => "maximum url (15) has already been reach "));
 	  }
 

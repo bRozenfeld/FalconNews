@@ -5,9 +5,9 @@ document.addEventListener("DOMContentLoaded", function() {
   updateFeeders();
   getNews();
   fullScreenDimensions();
-  setInterval(update, 180000); // refresh the news each 3 minutes
+  scrollAuto();
+  setInterval(update, 120000); // refresh the news each 2 minutes
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
-
 });
 
 // listener on keystroke
@@ -135,7 +135,7 @@ function update() {
 // function to display the news on the screen
 function displayNews(data) {
   //console.log("Enter displayNews(data) method -> jsonVar: ");
-  //console.log(data);
+  console.log(data);
 
   var title = document.getElementById("title");
   title.innerHTML = data[0].title;
@@ -157,8 +157,9 @@ function displayNews(data) {
   priority.innerHTML = data[0].priority;
 
   var img = document.getElementById("img");
-  img.src = data[0].url;
-	img.innerHTML = data[0].img
+  console.log(data[0].url_img)
+  if(data[0].url_img!==null)
+	img.src = data[0].url_img;
 };
 
 // function to open the document in full screen mode
@@ -256,3 +257,9 @@ function normalDimensions(){
 	document.getElementById("news").style.width="";
 	document.getElementById("news").style.height="";
 }
+function scrollAuto()
+  {
+  window.scrollBy(0,2);
+  setTimeout('scrollAuto()',500);
+  }
+

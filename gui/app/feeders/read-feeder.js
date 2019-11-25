@@ -21,7 +21,7 @@ function getFeeders() {
 		var jsonVar = JSON.parse(request.responseText);
       console.log("201");
 	  updateFeeders(jsonVar);
-    }
+    } 
   }
   request.send();
 };

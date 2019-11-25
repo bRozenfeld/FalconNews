@@ -1,11 +1,16 @@
 document.addEventListener("DOMContentLoaded", function() {
   console.log("create-feeder.js load");
+  getFeeders();
 
   var url = document.getElementById('url');
 
   url.addEventListener('change', function(e) {
     var val = url.value;
   });
+});
+
+document.getElementById('add').addEventListener('click', function(e) {
+	e.preventDefault();
 });
 
 
@@ -24,7 +29,7 @@ function addFeeder() {
     } else if(request.status === 201) {
       //console.log(request.responseText);
 	  console.log("201");
-	  getFeeders();
+	  //setTimeout(getFeeders(),5000);
 	}
 };
   request.send(JSON.stringify({
@@ -41,12 +46,11 @@ function getFeeders() {
   request.open(method, urlDest);
   request.setRequestHeader("Content-Type", "application/json");
   request.onload = function() {
-    if (request.status === 201 && request.readyState === request.DONE) {
+    if (request.status === 200 && request.readyState === request.DONE) {
       var jsonVar = JSON.parse(request.responseText);
       console.log("getFeeders() Success: " + jsonVar);
       updateFeeders(jsonVar);
     } else {
-		console.log()
       console.log(request.responseText);
     }
   }

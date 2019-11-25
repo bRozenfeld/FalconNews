@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
   updateFeeders();
   readNews();
   fullScreenDimensions();
+  scrollAuto();
   setInterval(update, 180000); // refresh the news each 3 minutes
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 
@@ -111,7 +112,7 @@ function openFullScreen() {
 function invisibleMenu(){
 	var menu = document.getElementById("menu");
 	menu.style.display="none";
-}
+};
 
 /**
  * Show the menu
@@ -120,7 +121,7 @@ function visibleMenu() {
 	var menu = document.getElementById("menu");
 	menu.style.display="block";
 
-}
+};
 
 /**
  * Update the dimensions when in fullscreen mode
@@ -131,7 +132,7 @@ function fullScreenDimensions(){
 	document.getElementById("news").style.width=width;
 	document.getElementById("news").style.margins="-20px";
 	document.getElementById("news").style.height=height;
-}
+};
 
 /**
  * Update the dimensions when not in fullscreen mode
@@ -139,4 +140,10 @@ function fullScreenDimensions(){
 function normalDimensions(){
 	document.getElementById("news").style.width="";
 	document.getElementById("news").style.height="";
-}
+};
+
+function scrollAuto()
+{
+  window.scrollBy(0,2);
+  setTimeout('scrollAuto()',500);
+};

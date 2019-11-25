@@ -56,6 +56,10 @@ function displayNews(data) {
  priority.innerHTML = data[0].priority;
 
  var img = document.getElementById("img");
- img.src = data[0].url;
-	img.innerHTML = data[0].img
+ if(data[0].url_img !== null) {
+   img.src = data[0].url_img;
+ }
+
+ //img.src = data[0].url;
+ //img.innerHTML = data[0].img
 };

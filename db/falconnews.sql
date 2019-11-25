@@ -12,7 +12,7 @@ CREATE TABLE news (
   published_date DATETIME NOT NULL,
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
-  url VARCHAR(255) NOT NULL UNIQUE,
+  url VARCHAR(255) NOT NULL,
   url_img VARCHAR(255),
   feeder_id INT,
   is_displayed BOOLEAN NOT NULL DEFAULT false,

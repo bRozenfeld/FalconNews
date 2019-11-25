@@ -16,7 +16,7 @@ function updateFeeders() {
         updateFeeder(data[i]);
       }
     }else if(request.status === 404){
-		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+		//window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
 
   }else {
       //console.log(request.responseText);
@@ -41,7 +41,7 @@ function updateFeeder(data) {
       var jsonVar = JSON.parse(request.responseText);
       //console.log("updateFeeder() Success: " + jsonVar);
     }else if(request.status === 404){
-		window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+		//window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
 
   } else {
       //console.log(request.responseText);

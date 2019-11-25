@@ -20,7 +20,7 @@ function deleteNews(id) {
       //console.log("deleteNews() success: " + jsonVar);
     }
     else if(request.status === 400 && request.readyState === request.DONE){
-		    window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
+		    //window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
     }
     else {
       var jsonVar = JSON.parse(request.responseText);

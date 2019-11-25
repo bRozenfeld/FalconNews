@@ -72,8 +72,10 @@ function reset_password() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var info = JSON.parse(request.responseText);
       console.log("password updated : " + info);
+      window.location.href = "http://localhost/FalconNews/gui/app/auth/auth.html";
     } else {
       console.log("password reset failed");
+      window.location.href = "http://localhost/FalconNews/gui/app/auth/auth.html";
     }
   };
   request.send(JSON.stringify({

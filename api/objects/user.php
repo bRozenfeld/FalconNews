@@ -21,13 +21,16 @@ class User {
     $this->password=htmlspecialchars(strip_tags($this->password));
     $this->email=htmlspecialchars(strip_tags($this->email));
 
+    $stmt->bindParam(":email", $this->email);
+    $stmt->bindParam(":password", $this->password);
+
     $stmt->execute();
     return $stmt;
   }
 
   //read function
   public function read() {
-    $query = "SELECT f.id, f.email, f.password, f.is_admin FROM " . $this->table_name . " f";
+    $query = "SELECT f.id, f.email FROM " . $this->table_name . " f";
     $stmt = $this->connexion->prepare($query);
     $stmt->execute();
     return $stmt;

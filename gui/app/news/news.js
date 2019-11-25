@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
  * Else show the menu
  */
  document.addEventListener("fullscreenchange", function(event){
- 	console.log(document.fullscreen);
  	if(document.fullscreen) {
  		invisibleMenu();
  	} else {

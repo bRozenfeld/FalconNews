@@ -20,22 +20,20 @@ $num = $stmt->rowCount();
 if($num > 0) {
 
   $user_arr = array();
- 
+
   while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
     extract($row);
 
     $n = array(
       "id" => $id,
-      "email" => $email,
-      "password" => $password,
-      "is_admin" => $is_admin
+      "email" => $email
     );
 
     array_push($user_arr, $n);
 
   }
-  
+
   http_response_code(200);
   echo json_encode($user_arr);
 } else {

@@ -1,7 +1,7 @@
 /**
  * When document is loading, first get the token from the secure cookies
- * Then check if the token is valid and the user is an admin, display the users
- * if token is not valid or there's no token or user not admin, redirect to login page
+ * Then check if the token is valid and the user has admin right
+ * if token is not valid or there's no token, redirect to login page
  */
 document.addEventListener("DOMContentLoaded", function() {
   var token = getToken();
@@ -9,11 +9,13 @@ document.addEventListener("DOMContentLoaded", function() {
     validateToken(token);
     setTimeout(function() {
       if (isAuthenticated === true) {
-        if(checkIsAdmin(token)) {
-
-        } else {
-
+        if(isAdmin === true) {
+          readUsers();
         }
+        else {
+          window.location.href="http://localhost/FalconNews/gui/app/auth/auth.html";
+        }
+
       } else {
         window.location.href="http://localhost/FalconNews/gui/app/auth/auth.html";
       }

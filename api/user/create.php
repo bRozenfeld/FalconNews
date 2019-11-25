@@ -71,8 +71,6 @@ if(!empty($data->email)) {
     echo json_encode(array("message" => "Unable to create a user."));
   }
 
-
-
 } else {
   http_response_code(400);
   echo json_encode(array("message" => "Unable to create user. Data is incomplete."));

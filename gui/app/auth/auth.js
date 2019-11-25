@@ -117,7 +117,8 @@ function validateToken(token) {
        isAuthenticated = true;
        var response = JSON.parse(request.responseText);
        var data = response.data;
-       if(data.is_admin === true) {
+       console.log(data);
+       if(data.is_admin == true) {
          isAdmin = true;
        } else {
          isAdmin = false;

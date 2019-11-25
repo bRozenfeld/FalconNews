@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 // listener on document load
 document.addEventListener("DOMContentLoaded", function() {
@@ -137,7 +137,7 @@ function update() {
 function displayNews(data) {
   //console.log("Enter displayNews(data) method -> jsonVar: ");
   console.log(data);
-=======
+
 /**
  * Ajax call to get one of the news with GET method
  *
@@ -175,7 +175,7 @@ function displayNews(data) {
 function displayNews(data) {
  //console.log("Enter displayNews(data) method -> jsonVar: ");
  //console.log(data);
->>>>>>> f9b2de1a07098f909fbb102514a05ff614287594
+
 
  var title = document.getElementById("title");
  title.innerHTML = data[0].title;

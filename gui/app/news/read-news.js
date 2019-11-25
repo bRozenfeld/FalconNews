@@ -42,7 +42,7 @@ window.addEventListener("unload", function() {
 // update the news on the screen
 function update() {
   updateNews();
-  getNews();
+  readNews();
 };
 
 /**
@@ -65,7 +65,7 @@ function update() {
        displayNews(jsonVar);
      }else if(request.status === 404 && request.readyState === request.DONE){
  		//window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";
-
+      displayNews(jsonVar);
      } else {
        var jsonVar = JSON.parse(request.responseText);
        //console.log("getNews() failed: " + request.responseText)

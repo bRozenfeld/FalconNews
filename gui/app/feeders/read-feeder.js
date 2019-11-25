@@ -6,7 +6,6 @@
  *  404 if no feeders found
  */
 function readFeeders() {
-  console.log("ok");
   var urlDest = "http://localhost/FalconNews/api/feeders/read.php";
   var method = "GET";
   var request = new XMLHttpRequest();
@@ -15,25 +14,15 @@ function readFeeders() {
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var jsonVar = JSON.parse(request.responseText);
-
-      console.log("getFeeders() Success: " + jsonVar);
       updateFeeders(jsonVar);
-    } else if(request.status === 201 ){
-		var jsonVar = JSON.parse(request.responseText);
-      console.log("201");
-	  updateFeeders(jsonVar);
-    } 
-
       displayFeeders(jsonVar);
-      console.log(jsonVar);
     } else if(request.status === 404 && request.readyState === request.DONE ){
   		var jsonVar = JSON.parse(request.responseText);
   	  displayFeeders(jsonVar);
-      console.log(jsonVar);
+      //console.log(jsonVar);
     } else {
 
     }
-
   }
   request.send();
 };
@@ -72,5 +61,4 @@ function displayFeeders(data) {
   var divContainer = document.getElementById("feedUrls");
   divContainer.innerHTML = "";
   divContainer.appendChild(table);
-
 };

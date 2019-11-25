@@ -15,7 +15,9 @@
   <script src="../auth/auth.js"></script>
   <script src="feeders.js"></script>
   <script src="delete-feeder.js"></script>
-  <!--<script src="read-feeder.js"></script>-->
+  <script src="read-feeder.js"></script>
+  <script src="update-feeder.js"></script>
+  <script src="create-feeder.js"></script>
 </head>
 <body>
 <div class="container">
@@ -26,9 +28,11 @@
   <h2 class="text-center" style=color:navy>Ajouter Feeder</h2>
 	  <input id="url" type="url" class="form-control  input" placeholder="RSS URL, ex: https://website.com/rss" pattern="https://.*" required >
 	  <div class="input-group-append">
-		<button id="add" class="btn btn-success" type="button" onclick="javascript:location.reload(false),createFeeder()">Ajouter</button>
+		    <button id="add" class="btn btn-success" type="button" onclick="createFeeder()">Ajouter</button>
 	  </div>
   </div>
+
+  <p id="info"></p>
 
   <table class="table table-bordered ">
 	<thead>
@@ -44,7 +48,13 @@
 	</tbody>
   </table>
  </div>
- 
- <script src="create-feeder.js"></script>
+
+<!--
+ <script>
+  document.getElementById('add').addEventListener('click', function(e) {
+ 	  e.preventDefault();
+  });
+  </script>
+-->
 </body>
 </html>

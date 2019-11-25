@@ -38,7 +38,7 @@ function updateFeeder(data) {
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
       //console.log(request.responseText);
-      var jsonVar = JSON.parse(request.responseText);
+      //var jsonVar = JSON.parse(request.responseText);
       //console.log("updateFeeder() Success: " + jsonVar);
     }else if(request.status === 404){
 		//window.location.href="http://localhost/FalconNews/gui/app/error/page404.html";

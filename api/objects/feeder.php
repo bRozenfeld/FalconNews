@@ -99,7 +99,7 @@ class Feeder {
         $stmt->bindParam(":title", $n["title"]);
         $stmt->bindParam(":description", $n["description"]);
         $stmt->bindParam(":url", $n["url"]);
-		$stmt->bindParam(":url_img", $n["url_img"]);
+		    $stmt->bindParam(":url_img", $n["url_img"]);
         $stmt->bindParam(":published_date", $n["published_date"]);
         $stmt->bindParam(":feeder_id", $this->id);
         if(!$stmt->execute()) {

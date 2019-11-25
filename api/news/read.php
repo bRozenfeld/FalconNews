@@ -51,7 +51,7 @@ if($num == 1) {
   //return json_encode($news);
   //echo json_last_error_msg();
 } else {
-  //code response 404 - page not found
+  //code response 404 - no content
   http_response_code(404);
 
   echo json_encode(array("message" => "No news found."));

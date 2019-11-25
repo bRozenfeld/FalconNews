@@ -25,32 +25,33 @@ $user = new User($connexion);
 $data = json_decode(file_get_contents("php://input"));
 
 // make sure data isn't empty
-if(!empty($data->email) && !(empty($data->password))) {
+if(!empty($data->email) && !empty($data->password)) {
   $user->email = $data->email;
   $user->password = $data->password;
   // check that the email is valid
   if($user->checkEmail()) {
     if($user->checkPassword()) {
-      $token = array(
-        "iss" => $iss,
-        "aud" => $aud,
-        "iat" => $iat,
-        "nbf" => $nbf,
-        "data" => array(
-          "email" => $user->email
-        )
-      );
-
+        $token = array(
+         "iss" => $iss,
+         "aud" => $aud,
+         "iat" => $iat,
+         "nbf" => $nbf,
+         "exp" => $exp,
+         "data" => array(
+           "email" => $user->email,
+           "is_admin" => $user->isAdmin()
+         )
+       );
       http_response_code(200);
 
       $jwt = JWT::encode($token, $key);
       echo json_encode(array("message" => "Login successful.", "jwt" => $jwt));
     } else {
-      http_response_code(400);
-      echo json_encode(array("message" => "Invalid credentials."));
+      http_response_code(401);
+      echo json_encode(array("message" => "Login failed : invalid credentials."));
     }
   } else {
-    http_response_code(400);
+    http_response_code(401);
     echo json_encode(array("message" => "Invalid credentials."));
   }
 } else {

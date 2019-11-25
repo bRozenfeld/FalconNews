@@ -22,7 +22,7 @@ $news->priority = $json->priority;
 
 if($news->update()) {
   http_response_code(200);
-echo json_encode(array("message" => "News was updated." /*. print_r($json)*/));
+echo json_encode(array("message" => "News was updated."));
 } else {
   http_response_code(400);
   echo json_encode(array("message" => "Unable to update News."));

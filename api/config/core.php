@@ -7,5 +7,6 @@ $key = "private key RSA";
 $iss = "http://localhost/FalconNews";
 $aud = "http://localhost/FalconNews/";
 $iat = time();
-$nbf = $iat + 2;
+$nbf = $iat;
+$exp = $iat + 3600;
 ?>

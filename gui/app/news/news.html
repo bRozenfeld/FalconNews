@@ -1,18 +1,24 @@
+<html lang="eng">
+<head>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>FalconNews</title>
+  <link href="../assets/css/styleNews.css" rel="stylesheet" />
+  <link rel="shortcut icon" type="image/x-icon" href="..\assets\images\falconicone.png">
 
-<html>
-  <head>
-   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8">
-    <title>FalconNews</title>
-	<link href="../assets/css/styleNews.css" rel="stylesheet" />
-	<link rel="shortcut icon" type="image/x-icon" href="..\assets\images\falconicone.png">
-    <script src="read-news.js"></script>
+  <!-- Scripts -->
+  <script src="../auth/auth.js"></script>
+  <script src="news.js"></script>
+  <script src="read-news.js"></script>
+  <script src="delete-news.js"></script>
+  <script src="update-news.js"></script>
+  <script src="../feeders/update-feeder.js"></script>
 
-  </head>
-  <body>
+</head>
+<body>
 
-  <!-- NAVBAR-->
+<!-- NAVBAR-->
 <nav id="menu" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
   <div class="container">
     <a href="#" class="navbar-brand">
@@ -28,8 +34,8 @@
       <ul class="navbar-nav ml-auto font-weight-bold ">
         <li class="nav-item active"><a href="#" class="nav-link">Home </a></li>
         <li class="nav-item"><a href="../auth/auth.html" class="nav-link">Login</a></li>
-        <li class="nav-item"><a href="../feeders/feeders.html" class="nav-link">Feeders</a></li>
-        <li class="nav-item"><a href="../user/user.html" class="nav-link">User</a></li>
+        <li id="linkFeeders" class="nav-item"><a href="../feeders/feeders.html" class="nav-link">Feeders</a></li>
+        <li id="linkUser" class="nav-item"><a href="../user/user.html" class="nav-link">User</a></li>
       </ul>
     </div>
   </div>
@@ -48,10 +54,11 @@
 				<tr>
 					<td><img id="img" src="..\assets\images\cybernews.jpg" class="img-responsive rounded" border="3" style=width:100%></td>
 					 <td colspan="2"><p class="text-justify" id="description"></p></td>  
+
 				</tr>
 
 				<tr>
-					  <td><a  id="url"></a></td>
+					  <td><a id="url"></a></td>
 					  <td><span style=font-size:1.2em>Publié le :</span> <span style=font-size:1.2em id="pubDate"></span></h5></td>
 					  <p id="id" style="visibility: hidden"></p>
 					  <p id="priority" style="visibility: hidden"></p>
@@ -60,5 +67,5 @@
 		</table>
         </div>
   </div>
-  </body>
+</body>
 </html>

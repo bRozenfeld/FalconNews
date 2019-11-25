@@ -37,6 +37,6 @@ if($jwt) {
 	}
 } else { // jwt empty
 	http_response_code(401);
-	echo json_encode(array("message" => "Access denied."));
+	echo json_encode(array("message" => "Access denied.", "error" => "Token empty"));
 }
 ?>

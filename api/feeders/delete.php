@@ -22,6 +22,9 @@ if(!empty($data->id)) {
   if($feeder->delete()) {
     http_response_code(200);
     echo json_encode(array("message" => "URL was deleted successfully"));
+  } else {
+    http_response_code(400);
+    echo json_encode(array("message" => "Unable to delete this feed."));
   }
 } else {
   http_response_code(400);

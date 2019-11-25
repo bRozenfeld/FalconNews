@@ -2,6 +2,16 @@ var isAuthenticated = false;
 var isAdmin = false;
 
 /**
+ * When document is loading
+ */
+document.addEventListener("DOMContentLoaded", function() {
+  if(document.getElementById("connexion") !== null) {
+
+  }
+});
+
+
+/**
  * Authenticate the user, send the following data with POST method
  * "email" : String
  * "password" : Password
@@ -11,7 +21,6 @@ var isAdmin = false;
  * Response code : 400 if request invalid
  */
 function login() {
-  console.log("entering login() function");
 
   var email = document.getElementById("email");
   var password = document.getElementById("test");
@@ -54,6 +63,22 @@ function login() {
       password: password.value
   }));
 };
+
+/**
+ * Logout the user, send the following data with POST method
+ * Destroy the token in client side
+ * set the variables isAuthenticated and isAdmin to false
+ */
+function logout() {
+  var token = getToken();
+  if (token !== null) {
+    token = null;
+  }
+  isAuthenticated = false;
+  isAdmin = false;
+}
+
+
 
 /**
  * Reset the password from a user

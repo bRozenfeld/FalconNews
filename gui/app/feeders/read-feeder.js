@@ -15,6 +15,15 @@ function readFeeders() {
   request.onload = function() {
     if (request.status === 200 && request.readyState === request.DONE) {
       var jsonVar = JSON.parse(request.responseText);
+
+      console.log("getFeeders() Success: " + jsonVar);
+      updateFeeders(jsonVar);
+    } else if(request.status === 201 ){
+		var jsonVar = JSON.parse(request.responseText);
+      console.log("201");
+	  updateFeeders(jsonVar);
+    } 
+
       displayFeeders(jsonVar);
       console.log(jsonVar);
     } else if(request.status === 404 && request.readyState === request.DONE ){
@@ -24,6 +33,7 @@ function readFeeders() {
     } else {
 
     }
+
   }
   request.send();
 };

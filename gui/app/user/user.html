@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" />
+ 
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <meta charset="utf-8">
   <title>FalconNews New User</title>
   <link rel="shortcut icon" type="image/x-icon" href="..\assets\images\falconicone.png">
@@ -15,7 +17,29 @@
   <script src="delete-user.js"></script>
 </head>
 <body>
+<nav id="menu" class="navbar navbar-expand-lg py-3 navbar-dark bg-dark shadow-sm">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <!-- Logo Image -->
+      <img src="..\assets\images\falcon.png" width="150" alt="" class="d-inline-block align-middle mr-2">
+      <!-- Logo Text -->
+      <span class="text-uppercase font-weight-bold">Falcon News</span>
+    </a>
 
+    <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"><span class="navbar-toggler-icon"></span></button>
+
+    <div id="navbarSupportedContent" class="collapse navbar-collapse">
+      <ul class="navbar-nav ml-auto font-weight-bold ">
+        <li class="nav-item active"><a href="../news/news.html" class="nav-link">Home </a></li>
+        <li id="linkFeeders" class="nav-item"><a href="../feeders/feeders.html" class="nav-link">Feeders</a></li>
+        <li id="linkUser" class="nav-item"><a href="../user/user.html" class="nav-link">User</a></li>
+		<li class="nav-item" id="login"><a href="../auth/auth.html" class="nav-link">Login</a></li>
+		<li class="nav-item" id="reset"><a href="../auth/new_pwd.html" class="nav-link">Change password</a></li>
+		<li class="nav-item" id="logout"><button style="font-weight: bold" type="submit" class="btn btn-dark nav-link" onclick="logout()">Log out
+      </ul>
+    </div>
+  </div>
+</nav>
  <div class="container">
   <div id="userpng" class="text-center">
 		<img src="..\assets\images\user.png"  class="img-responsive" >

@@ -84,6 +84,19 @@ function reset_password() {
 };
 
 /**
+ * Logout the user, send the following data with POST method
+ * Destroy the token in client side
+ * set the variables isAuthenticated and isAdmin to false
+ */
+function logout() {
+  var token = getToken();
+  if (token !== null) {
+    token = null;
+  }
+  isAuthenticated = false;
+  isAdmin = false;
+}
+/**
  * Return the token conained in the cookies
  */
 function getToken() {

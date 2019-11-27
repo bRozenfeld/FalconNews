@@ -8,16 +8,23 @@ document.addEventListener("DOMContentLoaded", function() {
   updateFeeders();
   readNews();
   fullScreenDimensions();
-  scrollAuto();
-  setInterval(update, 180000); // refresh the news each 3 minutes
+  //scrollAuto();
+  //updateLogin()
+  setInterval(update, 120000); // refresh the news each 2 minutes
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 
   var token = getToken();
   if(token !== null) {
     validateToken(token);
     setTimeout(function() {
+      var login = document.getElementById("login");
+	  var logout = document.getElementById("logout");
+	  var resetpwd = document.getElementById("reset");
       // not authenticated
       if (isAuthenticated !== true) {
+		login.style.display="block";
+		logout.style.display="none"; 
+		resetpwd.style.display="none"; 
         var usersLink = document.getElementById("linkUser");
         usersLink.style.display = "none";
         var feedersLink = document.getElementById("linkFeeders");
@@ -25,6 +32,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       // authenticated
       else {
+		resetpwd.style.display="block";
+		logout.style.display="block";
+		login.style.display="none"; 
         // not admin
         if(isAdmin !== true) {
           var usersLink = document.getElementById("linkUser");
@@ -140,9 +150,30 @@ function normalDimensions(){
 	document.getElementById("news").style.width="";
 	document.getElementById("news").style.height="";
 };
-
+/**
+ * Automatic Scroll down for the page  
+ */
 function scrollAuto()
 {
   window.scrollBy(0,2);
   setTimeout('scrollAuto()',500);
 };
+
+/**
+ * Update Login to Log out (and reverse) when the user is authentificated.
+ *
+function updateLogin()
+{
+
+	var login = document.getElementById("login");
+	var logout = document.getElementById("logout");
+	if(isAuthenticated === true){
+		//console.log(isAuthenticated);
+		login.style.display="none";
+		logout.style.display="block";
+	}else{
+		//console.log(isAuthenticated);
+		login.style.display="block";
+		logout.style.display="none";
+	}
+}*/

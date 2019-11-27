@@ -9,8 +9,9 @@ document.addEventListener("DOMContentLoaded", function() {
   readNews();
   fullScreenDimensions();
   //scrollAuto();
-  //updateLogin()
-  setInterval(update, 120000); // refresh the news each 2 minutes
+
+  setInterval(update, 30000); // refresh the news each 3 minutes
+
   setInterval(updateFeeders, 600000) // update the feeders each 10minutes
 
   var token = getToken();

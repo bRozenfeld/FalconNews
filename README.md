@@ -28,6 +28,13 @@ Display news related to cybersecurity field in the world
 * gui/ frontend (javascript / html / css)
 * db/ infos sur la base de données (diagramme UML, fichiers de configurations)
 
+## Quelques flux rss
+* https://cyware.com/allnews/feed
+* https://feeds.feedburner.com/TheHackersNews?format=xml
+* https://threatpost.com/feed/
+*
+* Suivant la taille du flux, la requête peut mettre entre 5s et 1min à s'exécuter.
+
 
 
 

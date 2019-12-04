@@ -27,3 +27,5 @@ CREATE TABLE user (
   password VARCHAR(255) NOT NULL,
   is_admin BOOLEAN NOT NULL DEFAULT false
 ) ENGINE = InnoDB;
+
+INSERT INTO user SET email="admin@admin.com", password="$2y$10$74c83nFxX5jLDxHaXycMNeDO5Hnhyj/cyhgR1yWA9B8BffqYY/UcC", is_admin=true;

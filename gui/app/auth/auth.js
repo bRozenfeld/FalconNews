@@ -5,7 +5,7 @@ var isAdmin = false;
  * When document is loading
  */
 document.addEventListener("DOMContentLoaded", function() {
-  if(document.getElementById("connexion") !== null) {
+  if(document.getElementById("login") !== null) {
 
   }
 });
@@ -69,8 +69,9 @@ function login() {
  * Destroy the token in client side
  * set the variables isAuthenticated and isAdmin to false
  */
-function logout() {
+function logout() {	
   var token = getToken();
+  console.log(token);
   if (token !== null) {
     token = null;
   }
@@ -114,12 +115,10 @@ function reset_password() {
  * set the variables isAuthenticated and isAdmin to false
  */
 function logout() {
-  var token = getToken();
-  if (token !== null) {
-    token = null;
-  }
+  document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
   isAuthenticated = false;
   isAdmin = false;
+  window.location.href = "http://localhost/FalconNews/gui/app/auth/auth.html";
 }
 /**
  * Return the token conained in the cookies

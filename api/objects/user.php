@@ -100,10 +100,11 @@ class User {
     $alphabet_three = "0123456789";
     $pass = array();
     $alphabetLength = strlen($alphabet) - 1;
-    for($i=0; $i < 8; $i++) {
+    for($i=0; $i < 20; $i++) {
       $n = rand(0, $alphabetLength);
       $pass[] = $alphabet[$n];
     }
+    
     // add at least one min character
     $n = rand(0, strlen($alphabet_one)-1);
     $pass[] = $alphabet_one[$n];

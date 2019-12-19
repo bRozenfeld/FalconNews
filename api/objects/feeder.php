@@ -122,8 +122,10 @@ class Feeder {
   		$description = $testDom->getElementsByTagName('description');
   		$pubDate = $testDom->getElementsByTagName('pubDate');
 
+
   		if(($title->length!=0) && ($link->length!=0) && ($description->length!=0) && ($pubDate->length!=0)){
         $this->url = $url;
+
         return true;
   		}
 
@@ -131,6 +133,7 @@ class Feeder {
      return false;
    }
   }
+
 
   //check if the number of existing url is under 15
   public function checkMaxURL(){

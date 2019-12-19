@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
   if(document.getElementById("login") !== null) {
 
   }
+  console.log(isAuthenticated);
+  if(isAuthenticated) {
+    window.location.href = "http://localhost/FalconNews/gui/app/news/news.html";
+  }
 });
 
 
@@ -64,20 +68,6 @@ function login() {
   }));
 };
 
-/**
- * Logout the user, send the following data with POST method
- * Destroy the token in client side
- * set the variables isAuthenticated and isAdmin to false
- */
-function logout() {	
-  var token = getToken();
-  console.log(token);
-  if (token !== null) {
-    token = null;
-  }
-  isAuthenticated = false;
-  isAdmin = false;
-}
 
 
 
@@ -115,10 +105,12 @@ function reset_password() {
  * set the variables isAuthenticated and isAdmin to false
  */
 function logout() {
-  document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  token = getToken();
+  document.cookie = "token=null;path=/";
   isAuthenticated = false;
   isAdmin = false;
   window.location.href = "http://localhost/FalconNews/gui/app/auth/auth.html";
+  console.log(document.cookie);
 }
 /**
  * Return the token conained in the cookies

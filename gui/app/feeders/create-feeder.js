@@ -14,6 +14,7 @@ function createFeeder() {
   var request = new XMLHttpRequest();
   request.open(method, urlDest);
   request.setRequestHeader("Content-Type", "application/json");
+  request.setRequestHeader("Authorization", getToken());
   request.onload = function () {
     if (request.status === 201 && request.readyState === request.DONE) {
        var infos = JSON.parse(request.responseText);
